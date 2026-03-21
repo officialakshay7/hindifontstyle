@@ -39,9 +39,22 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
 
     <!-- Styles -->
+    <link rel="preload" href="assets/css/style.css" as="style">
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="preload" href="assets/font/fonts.css" as="style">
     <link rel="stylesheet" href="assets/font/fonts.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
+
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
 
     <style>
         .simple-nav {
@@ -179,39 +192,37 @@
                 अगला <i class="fas fa-chevron-right" aria-hidden="true"></i>
             </button>
         </nav>
-        <article>
-            <article class="article-section">
-                <div class="article-wrapper">
-                    <div class="article-content">
+        <article class="article-section">
+            <div class="article-wrapper">
+                <div class="article-content">
 
-                        <h2>Explore Unique Hindi Font Styles Online</h2>
-                        <p>
-                            Discover a wide range of beautiful and creative
-                            <a href="https://hindifontstyle.co.in/">Hindi font styles</a>
-                            perfect for social media posts, design projects, or enhancing your writing.
-                            Whether you're a designer, student, or content creator, our tools help you
-                            stand out with eye-catching text in your native language.
-                        </p>
+                    <h2>Explore Unique Hindi Font Styles Online</h2>
+                    <p>
+                        Discover a wide range of beautiful and creative
+                        <a href="https://hindifontstyle.co.in/">Hindi font styles</a>
+                        perfect for social media posts, design projects, or enhancing your writing.
+                        Whether you're a designer, student, or content creator, our tools help you
+                        stand out with eye-catching text in your native language.
+                    </p>
 
-                        <h2>Hindi Font Style Generator</h2>
-                        <p>
-                            Use our free and easy Hindi font style generator to instantly transform
-                            your plain Hindi text into bold, italic, fancy, or stylish versions.
-                            Just type, copy, or download — no login required. Perfect for Instagram
-                            bios, WhatsApp status, and YouTube thumbnails.
-                        </p>
+                    <h2>Hindi Font Style Generator</h2>
+                    <p>
+                        Use our free and easy Hindi font style generator to instantly transform
+                        your plain Hindi text into bold, italic, fancy, or stylish versions.
+                        Just type, copy, or download — no login required. Perfect for Instagram
+                        bios, WhatsApp status, and YouTube thumbnails.
+                    </p>
 
-                        <h2>Stylish Hindi Font for Every Occasion</h2>
-                        <p>
-                            Add uniqueness to your text with our collection of stylish Hindi fonts.
-                            From classic to modern and quirky styles, you'll find the perfect font
-                            to match your mood and message. Try these stylish Hindi fonts and impress
-                            your friends with beautiful Hindi writing.
-                        </p>
+                    <h2>Stylish Hindi Font for Every Occasion</h2>
+                    <p>
+                        Add uniqueness to your text with our collection of stylish Hindi fonts.
+                        From classic to modern and quirky styles, you'll find the perfect font
+                        to match your mood and message. Try these stylish Hindi fonts and impress
+                        your friends with beautiful Hindi writing.
+                    </p>
 
-                    </div>
                 </div>
-            </article>
+            </div>
         </article>
     </main>
 
@@ -226,8 +237,16 @@
     </footer>
 
     <!-- Scripts -->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script defer src="assets/js/script.js"></script>
+
+    <script>
+        if (document.querySelector(".download-btn")) {
+            var s = document.createElement("script");
+            s.src = "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
+            s.defer = true;
+            document.body.appendChild(s);
+        }
+    </script>
 </body>
 
 </html>
