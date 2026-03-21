@@ -57,48 +57,145 @@
 
     <style>
         .simple-nav {
+
             background: #d6045cb6;
+
             padding: 1rem 2rem;
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+
+            position: relative;
+
         }
+
+        /* Logo */
 
         .nav-logo {
+
             color: white;
+
             font-size: 1.3rem;
+
             font-weight: bold;
+
             text-decoration: none;
+
         }
+
+        /* Hide checkbox */
+
+        #menu-toggle {
+
+            display: none;
+
+        }
+
+        /* Hamburger */
+
+        .hamburger {
+
+            display: none;
+
+            flex-direction: column;
+
+            cursor: pointer;
+
+            gap: 5px;
+
+        }
+
+        /* Hamburger lines */
+
+        .hamburger span {
+
+            width: 25px;
+
+            height: 3px;
+
+            background: white;
+
+            border-radius: 3px;
+
+            transition: 0.3s;
+
+        }
+
+        /* Desktop links */
 
         .nav-links {
+
             display: flex;
+
             gap: 1.5rem;
-            flex-wrap: wrap;
+
         }
 
+        /* Links style */
+
         .nav-links a {
+
             color: white;
+
             text-decoration: none;
+
             padding: 0.3rem 0.6rem;
+
         }
 
         .nav-links a:hover {
+
             background: rgba(255, 255, 255, 0.2);
+
             border-radius: 4px;
+
         }
 
-        @media (max-width: 600px) {
-            .simple-nav {
-                flex-direction: column;
-                text-align: center;
+        /* Mobile */
+
+        @media (max-width: 768px) {
+
+            .hamburger {
+
+                display: flex;
+
             }
 
             .nav-links {
-                justify-content: center;
+
+                position: absolute;
+
+                top: 70px;
+
+                left: 0;
+
+                width: 100%;
+
+                background: #d6045cb6;
+
+                flex-direction: column;
+
+                align-items: center;
+
+                gap: 1rem;
+
+                padding: 1rem 0;
+
+                display: none;
+
             }
+
+            /* Show menu when checked */
+
+            #menu-toggle:checked~.nav-links {
+
+                display: flex;
+
+            }
+
         }
     </style>
 </head>
@@ -106,14 +203,47 @@
 <body>
     <!-- Simple Navigation -->
     <nav class="simple-nav">
-        <a href="https://hindifontstyle.co.in/" class="nav-logo">Hindi Font Style</a>
+
+        <!-- Logo -->
+        <a href="https://hindifontstyle.co.in/" class="nav-logo">
+            Hindi Font Style
+        </a>
+
+        <!-- Hidden Checkbox -->
+        <input type="checkbox" id="menu-toggle">
+
+        <!-- Hamburger Icon -->
+        <label for="menu-toggle" class="hamburger" aria-label="Toggle menu">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </label>
+
+        <!-- Navigation Links -->
         <div class="nav-links">
-            <a href="https://hindifontstyle.co.in/">Home</a>
-            <a href="https://hindifontstyle.co.in/pages/about-us">About Us</a>
-            <a href="https://hindifontstyle.co.in/pages/contact-us">Contact Us</a>
-            <a href="https://hindifontstyle.co.in/pages/privacy-policy">Privacy Policy</a>
+
+            <a href="https://hindifontstyle.co.in/">
+                Home
+            </a>
+
+            <a href="https://hindifontstyle.co.in/pages/about-us">
+                About Us
+            </a>
+
+            <a href="https://hindifontstyle.co.in/pages/contact-us">
+                Contact Us
+            </a>
+
+            <a href="https://hindifontstyle.co.in/pages/privacy-policy">
+                Privacy Policy
+            </a>
+
         </div>
+
     </nav>
+
     <header>
         <div class="header-top">
             <h1>Hindi Font Style - हिंदी फॉन्ट स्टाइल जनरेटर</h1>
@@ -167,7 +297,8 @@
                 <div style="max-width: 1024px; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; margin: 0 auto;
             ">
                     <h2>Explore Unique Hindi Font Styles Online</h2>
-                    <p>Discover a wide range of beautiful and creative <a href="https://hindifontstyle.co.in/">Hindi font
+                    <p>Discover a wide range of beautiful and creative <a href="https://hindifontstyle.co.in/">Hindi
+                            font
                             styles</a>
                         perfect for social media posts, design projects, or enhancing your writing. Whether you're a
                         designer, student, or content creator, our tools help you stand out with eye-catching text in
