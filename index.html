@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hindi Font Style - हिंदी फॉन्ट स्टाइल जनरेटर</title>
+    <meta name="description"
+        content="Free Hindi font style generator with 50+ stylish fonts. Convert Hindi text into beautiful styles, copy instantly, or download as images. हिंदी फॉन्ट स्टाइल जनरेटर ऑनलाइन।">
+    <meta name="keywords"
+        content="hindi font, hindi font style, hindi text generator, stylish hindi fonts, hindi typing, देवनागरी फॉन्ट, हिंदी फॉन्ट स्टाइल, हिंदी टाइपिंग">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hindifontstyle.co.in/">
+    <meta property="og:title" content="Hindi Font Style Generator - स्टाइलिश हिंदी फॉन्ट जनरेटर">
+    <meta property="og:description"
+        content="Free Hindi font style generator with 50+ stylish fonts. Convert Hindi text into beautiful styles, copy instantly, or download as images. हिंदी फॉन्ट स्टाइल जनरेटर ऑनलाइन।">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hindifontstyle.co.in/">
+    <meta property="twitter:title" content="Hindi Font Style Generator - स्टाइलिश हिंदी फॉन्ट जनरेटर">
+    <meta property="twitter:description"
+        content="Free Hindi font style generator with 50+ stylish fonts. Convert Hindi text into beautiful styles, copy instantly, or download as images. हिंदी फॉन्ट स्टाइल जनरेटर ऑनलाइन।">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hindifontstyle.co.in/">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/font/fonts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Hindi Font Style Generator",
+        "url": "https://hindifontstyle.co.in/",
+        "description": "Free Hindi font style generator with 50+ stylish fonts. Convert Hindi text into beautiful styles, copy instantly, or download as images. हिंदी फॉन्ट स्टाइल जनरेटर ऑनलाइन।",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    <!-- <meta name="google-site-verification" content="" /> -->
+
+    <style>
+        .simple-nav {
+            background: #d6045cb6;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-logo {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.3rem 0.6rem;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        @media (max-width: 600px) {
+            .simple-nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Simple Navigation -->
+    <nav class="simple-nav">
+        <a href="/" class="nav-logo">Hindi Font Style</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="pages/about-us">About Us</a>
+            <a href="pages/contact-us">Contact Us</a>
+            <a href="pages/privacy-policy">Privacy Policy</a>
+        </div>
+    </nav>
+    <header>
+        <div class="header-top">
+            <h1>Hindi Font Style - हिंदी फॉन्ट स्टाइल जनरेटर</h1>
+            <p class="subtitle">Convert your normal text into stylish Hindi fonts easily.</p>
+        </div>
+    </header>
+
+    <nav class="header-links" aria-label="ऍडिशनल लिंक">
+        <a href="https://egconvert.com/" target="_blank" rel="noopener noreferrer">Hindi Font Converter</a>
+    </nav>
+
+    <main>
+        <section class="input-section" aria-label="टेक्स्ट इनपुट सेक्शन">
+            <div class="input-wrapper">
+                <label for="input-text" class="visually-hidden">हिंदी टेक्स्ट यहाँ टाइप करें</label>
+                <textarea id="input-text" placeholder="यहाँ हिंदी में टाइप करें..." aria-label="हिंदी टेक्स्ट इनपुट"
+                    rows="4"></textarea>
+                <button class="clear-btn" aria-label="टेक्स्ट साफ करें">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="input-actions">
+                <button class="action-btn" id="paste-btn" aria-label="क्लिपबोर्ड से पेस्ट करें">
+                    <i class="fas fa-paste" aria-hidden="true"></i>
+                    पेस्ट
+                </button>
+                <button class="action-btn" id="clear-all-btn" aria-label="सारा टेक्स्ट मिटाएं">
+                    <i class="fas fa-trash" aria-hidden="true"></i>
+                    सब मिटाएं
+                </button>
+            </div>
+        </section>
+
+        <section class="font-styles" aria-label="फॉन्ट स्टाइल्स">
+            <!-- Font style containers which will be automatically added by JavaScript code here -->
+        </section>
+
+        <nav class="pagination" aria-label="पेज नेविगेशन">
+            <button class="pagination-btn" id="prevPage" aria-label="पिछला पेज">
+                <i class="fas fa-chevron-left" aria-hidden="true"></i> पिछला
+            </button>
+            <div class="page-info" aria-live="polite">
+                पेज <span id="currentPage">1</span> / <span id="totalPages">1</span>
+            </div>
+            <button class="pagination-btn" id="nextPage" aria-label="अगला पेज">
+                अगला <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
+        </nav>
+        <article>
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <div style="max-width: 1024px; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; margin: 0 auto;
+            ">
+                    <h2>Explore Unique Hindi Font Styles Online</h2>
+                    <p>Discover a wide range of beautiful and creative <a href="https://egconvert.com/">Hindi font
+                            styles</a>
+                        perfect for social media posts, design projects, or enhancing your writing. Whether you're a
+                        designer, student, or content creator, our tools help you stand out with eye-catching text in
+                        your
+                        native language.</p>
+
+                    <h2>Hindi Font Style Generator</h2>
+                    <p>Use our free and easy Hindi font style generator to instantly transform your plain Hindi text
+                        into bold, italic, fancy, or stylish versions. Just type, copy, or download — no login required.
+                        Perfect
+                        for Instagram bios, WhatsApp status, and YouTube thumbnails.</p>
+
+                    <h2>Stylish Hindi Font for Every Occasion</h2>
+                    <p>Add uniqueness to your text with our collection of stylish Hindi fonts. From classic to
+                        modern and quirky styles, you'll find the perfect font to match your mood and message. Try these
+                        stylish Hindi fonts and impress your friends with beautiful Hindi writing.</p>
+                </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2026 Hindi Font Style Generator</p>
+        <nav class="footer-links" aria-label="फुटर लिंक">
+            <a href="pages/about-us">About Us</a>
+            <a href="pages/contact-us">Contact Us</a>
+            <a href="pages/privacy-policy">Privacy Policy</a>
+        </nav>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
