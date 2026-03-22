@@ -1,0 +1,22 @@
+{
+  "name": "Hindi Font Style Generator",
+  "short_name": "Hindi Fonts",
+  "description": "Free Hindi font style generator with 50+ stylish fonts. Convert Hindi text to beautiful styles, copy instantly, or download as images. हिंदी फॉन्ट स्टाइल जनरेटर",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#CD2C58",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/assets/img/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
