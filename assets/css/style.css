@@ -73,7 +73,7 @@ header {
     gap: 2rem;
     padding: 1rem;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
     margin-bottom: 1rem;
 }
@@ -100,7 +100,7 @@ header {
         flex-direction: column;
         gap: 0.75rem;
     }
-    
+
     .header-links a {
         width: 100%;
         text-align: center;
@@ -179,7 +179,7 @@ header {
     position: absolute;
     right: 10px;
     top: 10px;
-    background: rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.1);
     border: none;
     border-radius: 50%;
     width: 30px;
@@ -192,7 +192,7 @@ header {
 }
 
 .clear-btn:hover {
-    background: rgba(0,0,0,0.2);
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .input-actions {
@@ -236,7 +236,7 @@ header {
     background: white;
     padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .font-style-box p {
@@ -250,7 +250,8 @@ header {
     justify-content: center;
 }
 
-.copy-btn, .download-btn {
+.copy-btn,
+.download-btn {
     background-color: var(--primary-color);
     color: white;
     border: none;
@@ -263,7 +264,8 @@ header {
     gap: 0.3rem;
 }
 
-.copy-btn:hover, .download-btn:hover {
+.copy-btn:hover,
+.download-btn:hover {
     background-color: #357abd;
 }
 
@@ -312,7 +314,7 @@ footer {
         flex-direction: column;
         gap: 0.5rem;
     }
-    
+
     .footer-links a {
         font-size: 0.9rem;
         padding: 0.5rem;
@@ -337,7 +339,7 @@ footer {
     background: white;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .content-wrapper h2 {
@@ -400,7 +402,7 @@ footer {
     background: white;
     padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
@@ -449,15 +451,15 @@ footer {
     .content-wrapper {
         padding: 1.5rem;
     }
-    
+
     .content-wrapper h2 {
         font-size: 1.5rem;
     }
-    
+
     .content-wrapper h3 {
         font-size: 1.2rem;
     }
-    
+
     .contact-methods {
         grid-template-columns: 1fr;
     }
@@ -496,4 +498,80 @@ footer {
 
 .content-wrapper a {
     word-wrap: break-word;
+}
+
+
+/* NEW CSS */
+
+.simple-nav {
+    background: #CD2C58;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.nav-logo {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.3rem 0.6rem;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+    .simple-nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
+}
+
+/* Article Section */
+
+.article-section {
+    width: 100%;
+}
+
+.article-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.article-content {
+    max-width: 1024px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    text-align: center;
+    margin: 0 auto;
 }
