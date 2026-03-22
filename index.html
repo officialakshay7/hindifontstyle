@@ -61,6 +61,83 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+
+    <style>
+        /* NEW CSS */
+
+        .simple-nav {
+            background: #CD2C58;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-logo {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.3rem 0.6rem;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        @media (max-width: 600px) {
+            .simple-nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+        }
+
+        /* Article Section */
+
+        .article-section {
+            width: 100%;
+        }
+
+        .article-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .article-content {
+            max-width: 1024px;
+            padding: 20px;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            text-align: center;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 
 <body>
