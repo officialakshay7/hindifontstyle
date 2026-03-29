@@ -5,6 +5,107 @@
     --text-color: #EB4C4C;
 }
 
+
+/* new css */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+/* NEW CSS */
+
+        .simple-nav {
+            background: #CD2C58;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-logo {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.3rem 0.6rem;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        @media (max-width: 600px) {
+            .simple-nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+        }
+
+        /* Article Section */
+
+        .article-section {
+            width: 100%;
+        }
+
+        .article-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .article-content {
+            max-width: 1024px;
+            padding: 40px;
+
+            display: flex;
+            flex-direction: column;
+
+            /* align-items: center;
+            justify-content: center; */
+
+            gap: 20px;
+
+            /* text-align: center; */
+            margin: 0 auto;
+        }
+
+        .article-content h3,
+        .article-content ol,
+        .article-content li,
+        .article-content p {
+            text-align: left;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
 /* Accessibility Helpers */
 .visually-hidden {
     position: absolute;
@@ -500,103 +601,3 @@ footer {
     word-wrap: break-word;
 }
 
-
-/* new css */
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: 0;
-}
-
-/* NEW CSS */
-
-        .simple-nav {
-            background: #CD2C58;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .nav-logo {
-            color: white;
-            font-size: 1.3rem;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            padding: 0.3rem 0.6rem;
-        }
-
-        .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-        }
-
-        @media (max-width: 600px) {
-            .simple-nav {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .nav-links {
-                justify-content: center;
-            }
-        }
-
-        /* Article Section */
-
-        .article-section {
-            width: 100%;
-        }
-
-        .article-wrapper {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .article-content {
-            max-width: 1024px;
-            padding: 40px;
-
-            display: flex;
-            flex-direction: column;
-
-            /* align-items: center;
-            justify-content: center; */
-
-            gap: 20px;
-
-            /* text-align: center; */
-            margin: 0 auto;
-        }
-
-        .article-content h3,
-        .article-content ol,
-        .article-content li,
-        .article-content p {
-            text-align: left;
-        }
-
-        .nav-links {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
