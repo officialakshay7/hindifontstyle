@@ -79,7 +79,7 @@
 .article-section {
     width: 100%;
     /* new code */
-    min-height: 420px;
+    min-height: 400px;
     contain: layout;
 }
 
@@ -163,6 +163,7 @@ header {
     text-align: center;
     padding: 1rem 0;
     /* margin-bottom: 1rem; */
+    min-height: 120px; /* adjust to match your actual header height */
 }
 
 .header-top {
@@ -344,6 +345,26 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     padding: 1rem;
+    min-height: 300px;
+}
+
+/* new css */
+.font-styles:empty {
+    min-height: 400px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 .font-style-box {
