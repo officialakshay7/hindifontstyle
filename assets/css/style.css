@@ -78,6 +78,9 @@
 
 .article-section {
     width: 100%;
+    /* new code */
+    min-height: 420px;
+    contain: layout;
 }
 
 .article-wrapper {
