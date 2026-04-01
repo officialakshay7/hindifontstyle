@@ -56,8 +56,15 @@
     <link rel="manifest" href="/manifest.json">
 
     <!-- Styles & Preloads -->
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/font/fonts.css">
+    <link rel="preload" href="/assets/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="/assets/css/style.css">
+    </noscript>
+
+    <link rel="preload" href="/assets/font/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="/assets/font/fonts.css">
+    </noscript>
 
     <!--  defer Font Awesome (it's non-critical) -->
     <link rel="preload" href="/assets/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
