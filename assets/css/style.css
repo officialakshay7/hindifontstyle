@@ -634,3 +634,22 @@ footer {
 .content-wrapper a {
     word-wrap: break-word;
 }
+
+/* new css */
+
+/* Fix Font Awesome font-display */
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  src: url('/assets/webfonts/fa-solid-900.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Brands';
+  src: url('/assets/webfonts/fa-brands-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
