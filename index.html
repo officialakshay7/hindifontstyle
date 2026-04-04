@@ -72,15 +72,16 @@
             font-display: swap;
         }
 
-        /* FA icons — block prevents icon jumping/shifting -->
-  @font-face {
-    font-family: 'Font Awesome 6 Free';
-    src: url('/assets/webfonts/fa-solid-900.woff2') format('woff2');
-    font-weight: 900;
-    font-display: block;
-  }
+        /* FA icons — block prevents icon jumping/shifting */
+        @font-face {
+            font-family: 'Font Awesome 6 Free';
+            font-style: normal;
+            font-weight: 900;
+            font-display: swap;
+            /* use 'swap' if icons must always show */
+            src: url('/assets/webfonts/fa-solid-900.woff2') format('woff2');
+        }
 
-  /* Base */
         *,
         *::before,
         *::after {
