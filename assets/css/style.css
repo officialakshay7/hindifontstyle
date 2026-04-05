@@ -176,8 +176,10 @@ header {
 }
 
 .subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
     opacity: 0.9;
+        max-width: 900px;
+    margin: 0 auto;
 }
 
 /* Header Links - Responsive & Centered */
