@@ -294,6 +294,8 @@
     <!-- Styles & Preloads -->
     <!-- STEP 1: Preload the actual woff2 FIRST — before anything else -->
     <link rel="preload" href="/assets/font/Lexend-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- Preload Font Awesome to eliminate font-display delay -->
+    <link rel="preload" href="/assets/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- STEP 3: Defer all external CSS — non-blocking -->
     <link rel="preload" href="/assets/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
