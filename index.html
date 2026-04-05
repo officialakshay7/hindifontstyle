@@ -287,6 +287,26 @@
         body.menu-open {
             overflow: hidden;
         }
+
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none !important;
+            }
+
+            .hamburger {
+                display: flex !important;
+                /* force show */
+            }
+        }
+
+        /* Hamburger — always hidden on desktop, shown on mobile */
+.hamburger {
+    display: none;
+}
+@media (max-width: 768px) {
+    .hamburger { display: flex !important; }
+    .desktop-nav { display: none !important; }
+}
     </style>
 
     <!-- Styles & Preloads -->
@@ -1032,50 +1052,50 @@
 
 
     <script>
-    const hamburgerBtn = document.getElementById('hamburger-btn');
-    const mobileMenu   = document.getElementById('mobile-menu');
-    const overlay      = document.getElementById('mobile-overlay');
-    const closeBtn     = document.getElementById('mobile-close');
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('mobile-overlay');
+        const closeBtn = document.getElementById('mobile-close');
 
-    function openMenu() {
-        hamburgerBtn.classList.add('active');
-        mobileMenu.classList.add('active');
-        overlay.classList.add('active');
-        mobileMenu.setAttribute('aria-hidden', 'false');
-        overlay.setAttribute('aria-hidden', 'false');
-        hamburgerBtn.setAttribute('aria-expanded', 'true');
-        hamburgerBtn.setAttribute('aria-label', 'मेनू बंद करें');
-        document.body.classList.add('menu-open');
-    }
+        function openMenu() {
+            hamburgerBtn.classList.add('active');
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            mobileMenu.setAttribute('aria-hidden', 'false');
+            overlay.setAttribute('aria-hidden', 'false');
+            hamburgerBtn.setAttribute('aria-expanded', 'true');
+            hamburgerBtn.setAttribute('aria-label', 'मेनू बंद करें');
+            document.body.classList.add('menu-open');
+        }
 
-    function closeMenu() {
-        hamburgerBtn.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        overlay.classList.remove('active');
-        mobileMenu.setAttribute('aria-hidden', 'true');
-        overlay.setAttribute('aria-hidden', 'true');
-        hamburgerBtn.setAttribute('aria-expanded', 'false');
-        hamburgerBtn.setAttribute('aria-label', 'मेनू खोलें');
-        document.body.classList.remove('menu-open');
-    }
+        function closeMenu() {
+            hamburgerBtn.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            overlay.setAttribute('aria-hidden', 'true');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+            hamburgerBtn.setAttribute('aria-label', 'मेनू खोलें');
+            document.body.classList.remove('menu-open');
+        }
 
-    hamburgerBtn.addEventListener('click', () => {
-        mobileMenu.classList.contains('active') ? closeMenu() : openMenu();
-    });
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.contains('active') ? closeMenu() : openMenu();
+        });
 
-    overlay.addEventListener('click', closeMenu);
-    closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+        closeBtn.addEventListener('click', closeMenu);
 
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) closeMenu();
-    });
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) closeMenu();
+        });
 
-    // Close when a nav link is clicked
-    document.querySelectorAll('.mobile-nav-links a').forEach(link => {
-        link.addEventListener('click', closeMenu);
-    });
-</script>
+        // Close when a nav link is clicked
+        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    </script>
 </body>
 
 </html>
