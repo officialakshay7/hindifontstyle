@@ -63,14 +63,22 @@
     border-radius: 4px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .simple-nav {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row;
+        /* keep logo + hamburger on same line */
+        flex-wrap: nowrap;
+        text-align: left;
     }
 
-    .nav-links {
-        justify-content: center;
+    .desktop-nav {
+        display: none !important;
+        /* hide desktop links */
+    }
+
+    .hamburger {
+        display: flex !important;
+        /* show hamburger */
     }
 }
 
@@ -163,7 +171,8 @@ header {
     text-align: center;
     padding: 1rem 0;
     /* margin-bottom: 1rem; */
-    min-height: 120px; /* adjust to match your actual header height */
+    min-height: 120px;
+    /* adjust to match your actual header height */
 }
 
 .header-top {
@@ -178,7 +187,7 @@ header {
 .subtitle {
     font-size: 1rem;
     opacity: 0.9;
-        max-width: 900px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -641,17 +650,32 @@ footer {
 
 /* Fix Font Awesome font-display */
 @font-face {
-  font-family: 'Font Awesome 6 Free';
-  src: url('/assets/webfonts/fa-solid-900.woff2') format('woff2');
-  font-weight: 900;
-  font-style: normal;
-  font-display: block;
+    font-family: 'Font Awesome 6 Free';
+    src: url('/assets/webfonts/fa-solid-900.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: block;
 }
 
 @font-face {
-  font-family: 'Font Awesome 6 Brands';
-  src: url('/assets/webfonts/fa-brands-400.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: block;
+    font-family: 'Font Awesome 6 Brands';
+    src: url('/assets/webfonts/fa-brands-400.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+}
+
+/* ── Hamburger safety override — always last ── */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex !important;
+    }
+    .desktop-nav {
+        display: none !important;
+    }
+    .simple-nav {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+    }
 }

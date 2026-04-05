@@ -279,7 +279,8 @@
             }
 
             .hamburger {
-                display: flex;
+                display: flex !important;
+                /* ← add !important */
             }
         }
 
@@ -287,26 +288,6 @@
         body.menu-open {
             overflow: hidden;
         }
-
-        @media (max-width: 768px) {
-            .desktop-nav {
-                display: none !important;
-            }
-
-            .hamburger {
-                display: flex !important;
-                /* force show */
-            }
-        }
-
-        /* Hamburger — always hidden on desktop, shown on mobile */
-.hamburger {
-    display: none;
-}
-@media (max-width: 768px) {
-    .hamburger { display: flex !important; }
-    .desktop-nav { display: none !important; }
-}
     </style>
 
     <!-- Styles & Preloads -->
