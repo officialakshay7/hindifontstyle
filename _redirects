@@ -7,25 +7,25 @@
 /pages             /pages/             301
 
 # Common short URLs people might guess
-/about             /pages/about-us.html          301
-/contact           /pages/contact-us.html        301
-/privacy           /pages/privacy-policy.html    301
-/terms             /pages/terms-and-conditions.html  301
-/disclaimer        /pages/disclaimer.html        301
+/about             /pages/about-us          301
+/contact           /pages/contact-us        301
+/privacy           /pages/privacy-policy    301
+/terms             /pages/terms-and-conditions  301
+/disclaimer        /pages/disclaimer        301
 
 # Old site URL patterns (if your previous site used different paths)
-/unicode-converter        /fonts/unicode-converter.html    301
-/krutidev-converter       /fonts/krutidev-converter.html   301
-/kruti-dev-converter      /fonts/krutidev-converter.html   301
-/fonts/unicode            /fonts/unicode-converter.html    301
-/fonts/krutidev           /fonts/krutidev-converter.html   301
+/unicode-converter        /fonts/unicode-converter    301
+/krutidev-converter       /fonts/krutidev-converter   301
+/kruti-dev-converter      /fonts/krutidev-converter   301
+/fonts/unicode            /fonts/unicode-converter    301
+/fonts/krutidev           /fonts/krutidev-converter   301
 
 # Blog short forms
-/blog/calligraphy         /blog/hindi-calligraphy-fonts.html     301
-/blog/best-fonts          /blog/best-hindi-fonts.html            301
-/blog/ms-word             /blog/hindi-font-for-ms-word.html      301
-/blog/kruti-dev           /blog/kruti-dev-font-download.html     301
-/blog/devanagari          /blog/devanagari-fonts-guide.html      301
+/blog/calligraphy         /blog/hindi-calligraphy-fonts     301
+/blog/best-fonts          /blog/best-hindi-fonts            301
+/blog/ms-word             /blog/hindi-font-for-ms-word      301
+/blog/kruti-dev           /blog/kruti-dev-font-download     301
+/blog/devanagari          /blog/devanagari-fonts-guide      301
 
 # Generator anchor
 /generator         /#generator         301
