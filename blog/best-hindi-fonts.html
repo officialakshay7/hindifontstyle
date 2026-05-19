@@ -213,5 +213,29 @@
   <p>© 2025 HindiFontStyle.co.in &nbsp;·&nbsp; <a href="/pages/privacy-policy" style="color:rgba(255,255,255,.35)">Privacy</a> &nbsp;·&nbsp; <a href="/pages/terms-and-conditions" style="color:rgba(255,255,255,.35)">Terms</a> &nbsp;·&nbsp; <a href="/#generator" style="color:rgba(255,255,255,.35)">Font Generator</a></p>
 </footer>
 <script src="/assets/js/shared.js" defer></script>
+
+<!-- Google Analytics lazy loading -->
+ <script>
+(function(){
+  var loaded=false;
+  function loadGA(){
+    if(loaded)return;
+    loaded=true;
+    var s=document.createElement('script');
+    s.src='https://www.googletagmanager.com/gtag/js?id=G-939TE05121';
+    s.async=true;
+    document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js',new Date());
+    gtag('config','G-939TE05121',{'transport_type':'beacon','send_page_view':true});
+    window.gtag=gtag;
+  }
+  window.addEventListener('scroll',loadGA,{once:true,passive:true});
+  window.addEventListener('click',loadGA,{once:true,passive:true});
+  window.addEventListener('touchstart',loadGA,{once:true,passive:true});
+  setTimeout(loadGA,5000);
+})();
+</script>
 </body>
 </html>
