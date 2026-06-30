@@ -733,6 +733,193 @@
   </script>
 
 
+  <!-- Cookie Consent Banner — HindiFontStyle.co.in -->
+  <div id="cookieBanner" style="display:none">
+    <div class="cookie-inner">
+      <div class="cookie-icon">🍪</div>
+      <div class="cookie-text">
+        <strong>We use cookies</strong>
+        <p>
+          We use cookies to improve your experience, analyse site traffic, and
+          show relevant content. By clicking <em>Accept All</em>, you consent
+          to our use of cookies. Read our
+          <a href="/pages/privacy-policy" target="_blank">Privacy Policy</a>.
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn-accept" onclick="acceptCookies()">Accept All</button>
+        <button class="btn-necessary" onclick="acceptNecessary()">Necessary Only</button>
+        <button class="btn-decline" onclick="declineCookies()">Decline</button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #cookieBanner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #292524;
+      border-top: 1px solid #3d3733;
+      padding: 1rem 1.5rem;
+      z-index: 9999;
+      box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.45);
+      animation: cookieSlideUp 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes cookieSlideUp {
+      from {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .cookie-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .cookie-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .cookie-text {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .cookie-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #f5f5f4;
+      margin-bottom: 0.2rem;
+    }
+
+    .cookie-text p {
+      font-size: 0.8rem;
+      color: #a8a29e;
+      line-height: 1.55;
+    }
+
+    .cookie-text a {
+      color: #fb923c;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .cookie-text a:hover {
+      text-decoration: underline;
+    }
+
+    .cookie-actions {
+      display: flex;
+      gap: 0.6rem;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+
+    .btn-accept {
+      background: #fb923c;
+      color: #1C1917;
+      border: none;
+      border-radius: 7px;
+      padding: 0.55rem 1.2rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-accept:hover {
+      background: #f97316;
+    }
+
+    .btn-necessary {
+      background: transparent;
+      color: #d6d3d1;
+      border: 1px solid #57534e;
+      border-radius: 7px;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-necessary:hover {
+      border-color: #a8a29e;
+      color: #f5f5f4;
+    }
+
+    .btn-decline {
+      background: transparent;
+      color: #78716c;
+      border: none;
+      padding: 0.55rem 0.7rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .cookie-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cookie-actions {
+        width: 100%;
+      }
+
+      .btn-accept,
+      .btn-necessary {
+        flex: 1;
+        text-align: center;
+      }
+    }
+  </style>
+
+  <script>
+    (function () {
+      var consent = localStorage.getItem('hfs_cookie_consent');
+      if (!consent) {
+        document.getElementById('cookieBanner').style.display = 'block';
+      }
+    })();
+
+    function acceptCookies() {
+      localStorage.setItem('hfs_cookie_consent', 'all');
+      hideBanner();
+      // Enable Google Analytics / AdSense here if needed
+    }
+    function acceptNecessary() {
+      localStorage.setItem('hfs_cookie_consent', 'necessary');
+      hideBanner();
+    }
+    function declineCookies() {
+      localStorage.setItem('hfs_cookie_consent', 'declined');
+      hideBanner();
+    }
+    function hideBanner() {
+      var b = document.getElementById('cookieBanner');
+      b.style.animation = 'none';
+      b.style.transition = 'opacity 0.25s, transform 0.25s';
+      b.style.opacity = '0';
+      b.style.transform = 'translateY(30px)';
+      setTimeout(function () { b.style.display = 'none'; }, 300);
+    }
+  </script>
+
 
   <!-- Google Analytics lazy loading -->
   <script>
@@ -757,9 +944,6 @@
       setTimeout(loadGA, 5000);
     })();
   </script>
-
-
-
 </body>
 
 </html>
