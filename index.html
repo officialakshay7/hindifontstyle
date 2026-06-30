@@ -921,7 +921,7 @@
   </script>
 
   <!-- Floating Share Widget -->
-  <div class="share-widget">
+  <!-- <div class="share-widget">
     <button class="share-btn" id="shareBtn">🔗</button>
 
     <div class="share-menu" id="shareMenu">
@@ -1001,7 +1001,143 @@
       copy.textContent = "✅";
       setTimeout(() => copy.textContent = "📋", 1500);
     };
-  </script>
+  </script> -->
+
+  <!-- Floating WhatsApp Channel Button -->
+  <a href="https://whatsapp.com/channel/0029VbED2xBJZg3zTGEboJ1T" class="wa-channel-btn" target="_blank" rel="noopener">
+
+    <span class="wa-text">Join WhatsApp Channel</span>
+
+    <span class="wa-icon">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </span>
+
+  </a>
+
+  <style>
+    .wa-channel-btn {
+      position: fixed;
+      bottom: 75px;
+      right: 25px;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      z-index: 99999;
+      animation: floatUp .8s ease;
+    }
+
+    .wa-text {
+      background: #25D366;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 8px 18px;
+      border-radius: 10px 0 0 10px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, .18);
+      transition: .35s;
+    }
+
+    .wa-icon {
+      width: 58px;
+      height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 8px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, .22);
+      position: relative;
+    }
+
+    .wa-icon img {
+      width: 30px;
+      height: 30px;
+    }
+
+    /* Ripple Animation */
+
+    .wa-icon::before,
+    .wa-icon::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid rgba(37, 211, 102, .5);
+      animation: ripple 2s infinite;
+    }
+
+    .wa-icon::after {
+      animation-delay: 1s;
+    }
+
+    @keyframes ripple {
+      0% {
+        transform: scale(1);
+        opacity: .8;
+      }
+
+      100% {
+        transform: scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    /* Floating */
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(80px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Hover */
+
+    .wa-channel-btn:hover .wa-text {
+      background: #1ebe5d;
+      padding-right: 32px;
+    }
+
+    .wa-channel-btn:hover .wa-icon {
+      transform: scale(1.08);
+    }
+
+    .wa-icon {
+      transition: .3s;
+    }
+
+    /* Mobile */
+
+    @media(max-width:600px) {
+
+      .wa-channel-btn {
+        right: 15px;
+        bottom: 20px;
+      }
+
+      .wa-text {
+        font-size: 14px;
+        padding: 14px 18px;
+      }
+
+      .wa-icon {
+        width: 54px;
+        height: 54px;
+      }
+
+      .wa-icon img {
+        width: 28px;
+      }
+
+    }
+  </style>
 
 
   <!-- Google Analytics lazy loading -->
