@@ -1,105 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="https://www.xml-sitemaps.com/css/sitemap.css"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:fo="http://www.w3.org/1999/XSL/Format"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-
-<url>
-  <loc>https://hindifontstyle.co.in/</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/fonts/unicode-converter</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/fonts/krutidev-converter</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/blog/</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/pages/about-us</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/pages/contact-us</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/blog/hindi-calligraphy-fonts</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/blog/best-hindi-fonts</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/blog/devanagari-fonts-guide</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/blog/kruti-dev-font-download</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/pages/privacy-policy</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/pages/terms-and-conditions</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/pages/disclaimer</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/blog/hindi-font-for-ms-word</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/blog/hindi-fonts-for-wedding-invitations</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/blog/hindi-fonts-in-canva</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/blog/unicode-vs-ascii-hindi-fonts</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://hindifontstyle.co.in/blog/stylish-hindi-fonts-instagram-whatsapp</loc>
-  <lastmod>2026-07-05T04:06:11+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-
+  <url>
+       <loc>https://hindifontstyle.co.in/</loc>
+       <lastmod>2026-07-19T12:03:30+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>1.0000</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/fonts/unicode-converter</loc>
+       <lastmod>2026-07-19T12:03:30+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/fonts/krutidev-converter</loc>
+       <lastmod>2026-07-19T12:03:30+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/blog/</loc>
+       <lastmod>2026-07-19T12:03:30+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/pages/about-us</loc>
+       <lastmod>2026-07-19T12:03:30+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/pages/contact-us</loc>
+       <lastmod>2026-07-19T12:03:30+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/blog/kruti-dev-font-download</loc>
+       <lastmod>2026-02-10T00:00:00+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/blog/hindi-font-for-ms-word</loc>
+       <lastmod>2026-02-15T00:00:00+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/blog/best-hindi-fonts</loc>
+       <lastmod>2026-03-10T00:00:00+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/blog/hindi-calligraphy-fonts</loc>
+       <lastmod>2026-03-05T00:00:00+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/blog/hindi-fonts-for-wedding-invitations</loc>
+       <lastmod>2026-02-15T00:00:00+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/blog/hindi-fonts-in-canva</loc>
+       <lastmod>2026-02-20T00:00:00+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/blog/devanagari-fonts-guide</loc>
+       <lastmod>2026-02-20T00:00:00+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/pages/privacy-policy</loc>
+       <lastmod>2026-07-19T12:03:30+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/pages/terms-and-conditions</loc>
+       <lastmod>2026-07-19T12:03:30+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/pages/disclaimer</loc>
+       <lastmod>2026-07-19T12:03:30+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/blog/mangal-font-guide</loc>
+       <lastmod>2026-03-02T00:00:00+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/blog/unicode-vs-ascii-hindi-fonts</loc>
+       <lastmod>2026-03-08T00:00:00+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/blog/stylish-hindi-fonts-instagram-whatsapp</loc>
+       <lastmod>2026-07-19T12:03:30+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
 </urlset>
