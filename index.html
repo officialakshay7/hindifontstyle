@@ -5,8 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hindi Font Style Generator — Stylish Fonts Free Download</title>
-  <meta name="description"
-    content="Generate 100+ stylish Hindi font styles free. Copy, paste or download beautiful Devanagari fonts for Instagram, YouTube, WhatsApp and more. No signup needed.">
+  <meta name="description" content="Generate 100+ stylish Hindi font styles free. Copy, paste or download beautiful Devanagari fonts for Instagram, YouTube, WhatsApp and more. No signup needed.">
   <meta name="keywords"
     content="hindi font style, hindi font generator, stylish hindi fonts, hindi font download, hindi calligraphy fonts, hindi font free download, devanagari fonts, hindi font copy paste">
   <meta name="robots" content="index, follow">
@@ -24,13 +23,10 @@
 <meta property="og:image:alt" content="HindiFontStyle — Hindi Font Style Generator with 100+ Devanagari fonts">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://hindifontstyle.co.in/">
-  <meta name="twitter:title"
-    content="Hindi Font Style Generator — 100+ Stylish Hindi Fonts Free | HindiFontStyle.co.in">
-  <meta name="twitter:description"
-    content="Generate 100+ stylish Hindi font styles instantly. Free Hindi font generator — copy, paste or download beautiful Devanagari fonts for Instagram, YouTube, WhatsApp & more.">
+  <meta name="twitter:title" content="Hindi Font Style Generator — 100+ Stylish Fonts Free">>
+  <meta name="twitter:description" content="Generate 100+ stylish Hindi font styles free. Copy, paste or download beautiful Devanagari fonts for Instagram, YouTube, WhatsApp and more.">>
   <meta name="twitter:image" content="https://hindifontstyle.co.in/assets/img/og.jpg">
-  <meta name="author" content="HindiFontStyle.co.in">
-  <meta name="theme-color" content="#CD2C58">
+    <meta name="theme-color" content="#CD2C58">
 
   <meta name="author" content="Akshay, HindiFontStyle.co.in">
   <link rel="canonical" href="https://hindifontstyle.co.in/">
@@ -145,11 +141,8 @@
 }
 </script>
 
-  <!-- adsense code snippet -->
-  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1844164637823321"
-    crossorigin="anonymous"></script> -->
-
-  <script src="/assets/js/ads.js" defer></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1844164637823321" crossorigin="anonymous"></script>
+  
 
 </head>
 
@@ -992,6 +985,7 @@
     }
 
     .btn-accept {
+      font-family: 'DM Sans', sans-serif;
       background: #CD2C58;
       color: #1C1917;
       border: none;
@@ -1007,6 +1001,7 @@
     }
 
     .btn-necessary {
+      font-family: 'DM Sans', sans-serif;
       background: transparent;
       color: #d6d3d1;
       border: 1px solid #57534e;
@@ -1023,6 +1018,7 @@
     }
 
     .btn-decline {
+      font-family: 'DM Sans', sans-serif;
       background: transparent;
       color: #78716c;
       border: none;
@@ -1052,23 +1048,23 @@
 
   <script>
     (function () {
-      var consent = localStorage.getItem('hfs_cookie_consent');
+      var consent = document.cookie.split(';').some(function(c){return c.trim().startsWith('hfs_cookie_consent=');});
       if (!consent) {
         document.getElementById('cookieBanner').style.display = 'block';
       }
     })();
 
     function acceptCookies() {
-      localStorage.setItem('hfs_cookie_consent', 'all');
+      document.cookie='hfs_cookie_consent=all;max-age=31536000;path=/;SameSite=Lax';
       hideBanner();
       // Enable Google Analytics / AdSense here if needed
     }
     function acceptNecessary() {
-      localStorage.setItem('hfs_cookie_consent', 'necessary');
+      document.cookie='hfs_cookie_consent=necessary;max-age=31536000;path=/;SameSite=Lax';
       hideBanner();
     }
     function declineCookies() {
-      localStorage.setItem('hfs_cookie_consent', 'declined');
+      document.cookie='hfs_cookie_consent=declined;max-age=31536000;path=/;SameSite=Lax';
       hideBanner();
     }
     function hideBanner() {
@@ -1087,7 +1083,7 @@
     <!-- <span class="wa-text">Join WhatsApp Channel</span> -->
 
     <span class="wa-icon">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+      <img src="/assets/img/whatsapp.svg" alt="WhatsApp">
     </span>
 
   </a>
@@ -1095,7 +1091,7 @@
   <style>
     .wa-channel-btn {
       position: fixed;
-      bottom: 95px;
+      bottom: 115px;
       right: 45px;
       display: flex;
       align-items: center;
