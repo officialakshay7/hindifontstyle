@@ -4,37 +4,37 @@
 
   <url>
        <loc>https://hindifontstyle.co.in/</loc>
-       <lastmod>2026-08-08T04:50:49+00:00</lastmod>
+       <lastmod>2026-08-13T04:49:09+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>1.0000</priority>
   </url>
   <url>
        <loc>https://hindifontstyle.co.in/fonts/unicode-converter</loc>
-       <lastmod>2026-08-08T04:50:49+00:00</lastmod>
+       <lastmod>2026-08-13T04:49:09+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://hindifontstyle.co.in/fonts/krutidev-converter</loc>
-       <lastmod>2026-08-08T04:50:49+00:00</lastmod>
+       <lastmod>2026-08-13T04:49:09+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://hindifontstyle.co.in/blog/</loc>
-       <lastmod>2026-08-08T04:50:49+00:00</lastmod>
+       <lastmod>2026-08-13T04:49:09+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://hindifontstyle.co.in/pages/about-us</loc>
-       <lastmod>2026-08-08T04:50:49+00:00</lastmod>
+       <lastmod>2026-08-13T04:49:09+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://hindifontstyle.co.in/pages/contact-us</loc>
-       <lastmod>2026-08-08T04:50:49+00:00</lastmod>
+       <lastmod>2026-08-13T04:49:09+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
@@ -94,19 +94,19 @@
   </url>
   <url>
        <loc>https://hindifontstyle.co.in/pages/privacy-policy</loc>
-       <lastmod>2026-08-08T04:50:49+00:00</lastmod>
+       <lastmod>2026-08-13T04:49:09+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://hindifontstyle.co.in/pages/terms-and-conditions</loc>
-       <lastmod>2026-08-08T04:50:49+00:00</lastmod>
+       <lastmod>2026-08-13T04:49:09+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://hindifontstyle.co.in/pages/disclaimer</loc>
-       <lastmod>2026-08-08T04:50:49+00:00</lastmod>
+       <lastmod>2026-08-13T04:49:09+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
@@ -131,6 +131,12 @@
   <url>
        <loc>https://hindifontstyle.co.in/blog/hindi-fonts-for-logo-design</loc>
        <lastmod>2026-06-03T00:00:00+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://hindifontstyle.co.in/blog/hindi-fonts-for-android</loc>
+       <lastmod>2026-08-13T00:00:00+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.6400</priority>
   </url>
