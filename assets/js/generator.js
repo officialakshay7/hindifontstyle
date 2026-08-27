@@ -214,3 +214,25 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Init */
   render();
 });
+
+
+
+// ── FONT SIZE SLIDER ─────────────────────────────────────────
+(function () {
+  var slider = document.getElementById('fontSizeSlider');
+  var label  = document.getElementById('fontSizeVal');
+  if (!slider) return;
+  function applySize(val) {
+    label.textContent = val + 'px';
+    document.querySelectorAll('.fc-preview').forEach(function (el) {
+      el.style.fontSize = val + 'px';
+    });
+  }
+  slider.addEventListener('input', function () { applySize(this.value); });
+  // Apply on each page render (pagination)
+  var origRender = window._hfsAfterRender;
+  window._hfsAfterRender = function () {
+    if (origRender) origRender();
+    applySize(slider.value);
+  };
+})();

@@ -288,7 +288,23 @@
           </button>
         </div>
       </div>
-    </div>
+    
+
+    <!-- Font Size Slider -->
+        <div style="display:flex;align-items:center;gap:1rem;padding:.6rem 0 .4rem;flex-wrap:wrap">
+          <label for="fontSizeSlider" style="font-size:.8rem;font-weight:500;color:var(--ink-3);white-space:nowrap">
+            Preview Size:
+          </label>
+          <input type="range" id="fontSizeSlider" min="16" max="72" value="32"
+            style="flex:1;max-width:180px;accent-color:var(--red);cursor:pointer">
+          <span id="fontSizeVal"
+            style="font-size:.8rem;color:var(--ink-3);min-width:36px;font-variant-numeric:tabular-nums">32px</span>
+          <button
+            onclick="document.getElementById('fontSizeSlider').value=32;document.getElementById('fontSizeVal').textContent='32px';document.querySelectorAll('.fc-preview').forEach(function(el){el.style.fontSize='32px'})"
+            style="font-size:.75rem;color:var(--ink-4);background:none;border:1px solid var(--border);border-radius:3px;padding:2px 8px;cursor:pointer">Reset</button>
+        </div>
+
+        </div>
 
     <div class="results-wrap">
       <div class="results-bar">
