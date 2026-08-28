@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => { cpBtn.classList.remove('copied'); cpBtn.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy'; }, 2000);
       };
 
-      /* Font DL — opens Google Fonts specimen page (CORS-safe, always works) */
+      /* Font DL */
       const ftBtn = mkBtn('↓ Font');
       ftBtn.onclick = () => {
         const specUrl = 'https://fonts.google.com/specimen/' + s.fam.replace(/ /g, '+');
@@ -173,7 +173,30 @@ document.addEventListener('DOMContentLoaded', () => {
         a.click();
       };
 
-      btns.append(cpBtn, ftBtn, imgBtn);
+      /* Transparent PNG */
+      const tpngBtn = mkBtn('⬡ Transparent');
+      tpngBtn.title = 'Download with transparent background';
+      tpngBtn.onclick = async () => {
+        if (typeof html2canvas === 'undefined') { alert('Please wait and try again.'); return; }
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'position:fixed;left:-9999px;top:0;padding:28px 36px;background:transparent';
+        const p2 = document.createElement('p');
+        const tc = document.getElementById('textColorPicker');
+        p2.style.cssText = `font-family:'${s.fam}',sans-serif;font-size:2.5rem;color:${tc?tc.value:'#1C1917'};margin:0;line-height:1.3`;
+        if (s.cls) p2.classList.add(s.cls);
+        p2.textContent = t; wrap.appendChild(p2); document.body.appendChild(wrap);
+        await document.fonts.load(`1rem "${s.fam}"`);
+        const cv = await html2canvas(wrap, {backgroundColor:null, scale:3, logging:false});
+        document.body.removeChild(wrap);
+        const a = document.createElement('a');
+        a.href = cv.toDataURL('image/png');
+        a.download = 'hindi-font-transparent-'+s.lbl.replace(/[^\w]/g,'-')+'.png';
+        a.click();
+        tpngBtn.textContent = '✓ Done';
+        setTimeout(() => { tpngBtn.textContent = '⬡ Transparent'; }, 2000);
+      };
+
+      btns.append(cpBtn, ftBtn, imgBtn, tpngBtn);
       card.append(meta, prev, btns);
       grid.appendChild(card);
     });
@@ -182,6 +205,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (totEl) totEl.textContent = tot();
     if (prevBtn) prevBtn.disabled = page === 1;
     if (nextBtn) nextBtn.disabled = page === tot();
+
+    // Re-apply size and colour after render
+    _reapplyControls();
   }
 
   function mkBtn(html) {
@@ -211,28 +237,58 @@ document.addEventListener('DOMContentLoaded', () => {
     inp.value = ''; inp.dispatchEvent(new Event('input'));
   });
 
+  /* ── SIZE + COLOUR CONTROLS ─────────────────────────────── */
+  function _reapplyControls() {
+    var slider   = document.getElementById('fontSizeSlider');
+    var textPick = document.getElementById('textColorPicker');
+    var bgPick   = document.getElementById('bgColorPicker');
+    if (slider && slider.value !== '32') {
+      document.querySelectorAll('.fc-preview').forEach(function(el) {
+        el.style.fontSize = slider.value + 'px';
+      });
+    }
+    if (textPick && textPick.value !== '#1c1917' && textPick.value !== '#1C1917') {
+      document.querySelectorAll('.fc-preview').forEach(function(el) {
+        el.style.color = textPick.value;
+      });
+    }
+    if (bgPick && bgPick.value !== '#fdfcfa' && bgPick.value !== '#FDFCFA') {
+      document.querySelectorAll('.font-card').forEach(function(el) {
+        el.style.background = bgPick.value;
+      });
+    }
+  }
+
+  (function initControls() {
+    var slider   = document.getElementById('fontSizeSlider');
+    var sLabel   = document.getElementById('fontSizeVal');
+    var textPick = document.getElementById('textColorPicker');
+    var bgPick   = document.getElementById('bgColorPicker');
+
+    if (slider) {
+      slider.addEventListener('input', function() {
+        if (sLabel) sLabel.textContent = this.value + 'px';
+        document.querySelectorAll('.fc-preview').forEach(function(el) {
+          el.style.fontSize = slider.value + 'px';
+        });
+      });
+    }
+    if (textPick) {
+      textPick.addEventListener('input', function() {
+        document.querySelectorAll('.fc-preview').forEach(function(el) {
+          el.style.color = textPick.value;
+        });
+      });
+    }
+    if (bgPick) {
+      bgPick.addEventListener('input', function() {
+        document.querySelectorAll('.font-card').forEach(function(el) {
+          el.style.background = bgPick.value;
+        });
+      });
+    }
+  })();
+
   /* Init */
   render();
 });
-
-
-
-// ── FONT SIZE SLIDER ─────────────────────────────────────────
-(function () {
-  var slider = document.getElementById('fontSizeSlider');
-  var label  = document.getElementById('fontSizeVal');
-  if (!slider) return;
-  function applySize(val) {
-    label.textContent = val + 'px';
-    document.querySelectorAll('.fc-preview').forEach(function (el) {
-      el.style.fontSize = val + 'px';
-    });
-  }
-  slider.addEventListener('input', function () { applySize(this.value); });
-  // Apply on each page render (pagination)
-  var origRender = window._hfsAfterRender;
-  window._hfsAfterRender = function () {
-    if (origRender) origRender();
-    applySize(slider.value);
-  };
-})();
