@@ -108,7 +108,41 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(l);
   }
 
-  function getText() { return inp.value.trim() || 'नमस्ते भारत'; }
+  // function getText() { return inp.value.trim() || 'नमस्ते भारत'; }
+
+  // Simple English-to-Hindi transliteration map
+const TRANSLIT = {
+  'a':'अ','aa':'आ','i':'इ','ii':'ई','u':'उ','uu':'ऊ',
+  'e':'ए','ai':'ऐ','o':'ओ','au':'औ','ka':'क','kha':'ख',
+  'ga':'ग','gha':'घ','cha':'च','chha':'छ','ja':'ज','jha':'झ',
+  'ta':'त','tha':'थ','da':'द','dha':'ध','na':'न','pa':'प',
+  'pha':'फ','ba':'ब','bha':'भ','ma':'म','ya':'य','ra':'र',
+  'la':'ल','va':'व','sha':'श','sa':'स','ha':'ह','kka':'क्क',
+  'namaste':'नमस्ते','bharat':'भारत','hindi':'हिंदी',
+  'diwali':'दीपावली','shubh':'शुभ','jai':'जय',
+  'radhe':'राधे','krishna':'कृष्ण','ram':'राम','sita':'सीता',
+  'love':'प्यार','india':'भारत','mera':'मेरा','naam':'नाम',
+  'pyar':'प्यार','dil':'दिल','zindagi':'ज़िंदगी','yaar':'यार',
+  'bhai':'भाई','dost':'दोस्त','ghar':'घर','khana':'खाना'
+};
+
+function isHindi(text) {
+  return /[\u0900-\u097F]/.test(text);
+}
+
+function transliterate(text) {
+  if (!text || isHindi(text)) return text;
+  var lower = text.toLowerCase().trim();
+  // Check full word matches first
+  if (TRANSLIT[lower]) return TRANSLIT[lower];
+  return text; // Return as-is if no match
+}
+
+function getText() {
+  var raw = inp.value.trim();
+  if (!raw) return 'नमस्ते भारत';
+  return transliterate(raw) || raw;
+}
 
   const TAG_LABELS = {display:'Display', serif:'Serif', sans:'Sans', calli:'Calligraphy', effect:'Effect'};
 
