@@ -108,8 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(l);
   }
 
-  // function getText() { return inp.value.trim() || 'नमस्ते भारत'; }
-
   // Simple English-to-Hindi transliteration map
 const TRANSLIT = {
   'a':'अ','aa':'आ','i':'इ','ii':'ई','u':'उ','uu':'ऊ',
@@ -133,9 +131,15 @@ function isHindi(text) {
 function transliterate(text) {
   if (!text || isHindi(text)) return text;
   var lower = text.toLowerCase().trim();
-  // Check full word matches first
+  // 1. Check full phrase match first
   if (TRANSLIT[lower]) return TRANSLIT[lower];
-  return text; // Return as-is if no match
+  // 2. Try word-by-word
+  var words = lower.split(/\s+/);
+  var out = words.map(function(w) { return TRANSLIT[w] || w; });
+  if (out.some(function(w, i) { return w !== words[i]; })) {
+    return out.join(' ');
+  }
+  return text; // No match — return as typed
 }
 
 function getText() {
