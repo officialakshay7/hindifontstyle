@@ -3,6 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
+  <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page Not Found — HindiFontStyle.co.in</title>
   <meta name="description" content="Page not found. Return to HindiFontStyle.co.in — India's free Hindi font style generator with 100+ Devanagari font styles. Copy, download or export instantly.">
@@ -34,7 +38,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
     crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="preload" href="/assets/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/style.css"></noscript>
   <style>
     .err-wrap {
       min-height: calc(100vh - 64px);
@@ -134,7 +139,7 @@
 </script>
 
   <!-- adsense code snippet -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7065310966580167"
+  <script async fetchpriority="low" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7065310966580167"
     crossorigin="anonymous"></script>
 
   <!-- Google Analytics -->
@@ -173,7 +178,7 @@
   </div>
 
   <!-- HFS - Display Responsive -->
-<div style="text-align:center;padding:.5rem 0">
+<div style="text-align:center;padding:.5rem 0;min-height:100px;display:flex;align-items:center;justify-content:center">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-7065310966580167"

@@ -1,3 +1,40 @@
+
+  // English-to-Hindi word map for auto-transliteration
+  const EN_HI = {
+    'namaste':'नमस्ते','namaskar':'नमस्कार','bharat':'भारत','india':'भारत',
+    'hindi':'हिंदी','diwali':'दीपावली','holi':'होली','dussehra':'दशहरा',
+    'shubh':'शुभ','jai':'जय','ram':'राम','sita':'सीता','krishna':'कृष्ण',
+    'radhe':'राधे','ganesh':'गणेश','durga':'दुर्गा','lakshmi':'लक्ष्मी',
+    'pyaar':'प्यार','pyar':'प्यार','mohabbat':'मोहब्बत','dil':'दिल',
+    'zindagi':'ज़िंदगी','yaar':'यार','bhai':'भाई','dost':'दोस्त',
+    'ghar':'घर','parivar':'परिवार','mata':'माता','pita':'पिता',
+    'mera':'मेरा','naam':'नाम','khushi':'खुशी','anand':'आनंद',
+    'ganga':'गंगा','yamuna':'यमुना','himalaya':'हिमालय','desh':'देश',
+    'shakti':'शक्ति','bhakti':'भक्ति','sevaa':'सेवा','dharma':'धर्म',
+    'karma':'कर्म','gyan':'ज्ञान','satya':'सत्य','ahimsa':'अहिंसा',
+    'sundar':'सुंदर','sunder':'सुंदर','beautiful':'सुंदर',
+    'happy':'खुश','birthday':'जन्मदिन','welcome':'स्वागत',
+    'thanks':'धन्यवाद','dhanyavaad':'धन्यवाद','dhanyavad':'धन्यवाद',
+    'sorry':'माफ़','please':'कृपया','good morning':'सुप्रभात',
+    'good night':'शुभ रात्रि','good evening':'शुभ संध्या',
+    'jai hind':'जय हिंद','vande mataram':'वन्दे मातरम्',
+    'bharat mata ki jai':'भारत माता की जय',
+    'shubhkamnaayen':'शुभकामनाएं','shubhkamnaen':'शुभकामनाएं',
+    'abhinandan':'अभिनंदन','swagat':'स्वागत','pranam':'प्रणाम',
+    'love':'प्यार','king':'राजा','queen':'रानी','hero':'नायक',
+    'legend':'किंवदंती','warrior':'योद्धा','lion':'शेर',
+    'tiger':'बाघ','fire':'आग','thunder':'बिजली','storm':'तूफान',
+  };
+  function isDevanagari(t){return /[\u0900-\u097F]/.test(t);}
+  function autoTranslate(raw){
+    if(!raw||isDevanagari(raw)) return raw;
+    var lower=raw.toLowerCase().trim();
+    if(EN_HI[lower]) return EN_HI[lower];
+    var words=lower.split(/\s+/);
+    var out=words.map(function(w){return EN_HI[w]||w;});
+    return out.some(function(w,i){return w!==words[i];})?out.join(' '):raw;
+  }
+
 /* generator.js — Hindi font style engine */
 document.addEventListener('DOMContentLoaded', () => {
   const inp    = document.getElementById('inputText');
@@ -102,10 +139,28 @@ document.addEventListener('DOMContentLoaded', () => {
   function loadFont(fam) {
     if (loaded.has(fam)) return;
     loaded.add(fam);
-    const l = document.createElement('link');
-    l.rel = 'stylesheet';
-    l.href = 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(fam) + '&display=swap';
+    pendingFonts.push(fam);
+    clearTimeout(fontBatchTimer);
+    fontBatchTimer = setTimeout(flushFontBatch, 50);
+  }
+  var pendingFonts = [];
+  var fontBatchTimer = null;
+  function flushFontBatch() {
+    if (!pendingFonts.length) return;
+    var batch = pendingFonts.splice(0, 8);
+    var url = 'https://fonts.googleapis.com/css2?' + batch.map(function(f) {
+      return 'family=' + encodeURIComponent(f);
+    }).join('&') + '&display=swap';
+    var l = document.createElement('link');
+    l.rel = 'stylesheet'; l.href = url;
     document.head.appendChild(l);
+    if (pendingFonts.length) setTimeout(flushFontBatch, 100);
+  };
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(doLoad, { timeout: 2000 });
+    } else {
+      setTimeout(doLoad, 0);
+    }
   }
 
   // function getText() { return inp.value.trim() || 'नमस्ते भारत'; }

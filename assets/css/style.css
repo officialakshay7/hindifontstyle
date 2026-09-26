@@ -1,3 +1,10 @@
+/* Performance optimisations */
+.blog-section,.use-cases-section,.about-section,.features-section{
+  content-visibility:auto;
+  contain-intrinsic-size:0 500px;
+}
+/* Font display optimization */
+@font-face{font-display:swap}
 /* ═══════════════════════════════════════════════════
    HINDIFONTSTYLE.CO.IN — INK PRESS DESIGN SYSTEM
    Editorial · Print-Inspired · Typography-Forward
@@ -72,26 +79,6 @@ img { display: block; max-width: 100%; }
 }
 .nav-links a:hover { color: #fff; background: rgba(255,255,255,.08); }
 .nav-links a.active { color: #fff; }
-.tools-menu, .converters-menu { position: relative; }
-.dropdown-trigger {
-  border: 0; background: none; color: rgba(255,255,255,.65); font: inherit;
-  font-size: .82rem; padding: 6px 12px; border-radius: 20px; letter-spacing: .2px;
-}
-.dropdown-trigger:hover, .tools-menu.open .dropdown-trigger, .converters-menu.open .dropdown-trigger { color: #fff; background: rgba(255,255,255,.08); }
-.dropdown-trigger span { color: var(--red); margin-left: 3px; }
-.dropdown-list {
-  display: none; position: absolute; top: calc(100% + 8px); right: 0; z-index: 10;
-  min-width: 220px; padding: .4rem; background: var(--ink); border: 1px solid rgba(255,255,255,.12);
-  box-shadow: 0 12px 24px rgba(0,0,0,.22); border-radius: var(--r);
-}
-.tools-menu.open .dropdown-list, .converters-menu.open .dropdown-list { display: block; }
-.dropdown-list a { display: block; padding: .5rem .65rem; border-radius: 2px; white-space: nowrap; }
-.dropdown-list a:hover { background: rgba(255,255,255,.08); }
-.footer-tools { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.08); text-align: left; }
-.footer-tools strong { display: block; color: rgba(255,255,255,.65); margin-bottom: .5rem; }
-.footer-tools div { display: flex; flex-wrap: wrap; gap: .35rem 1rem; }
-.footer-tools a { color: rgba(255,255,255,.35); font-size: .75rem; }
-.footer-tools a:hover { color: #fff; }
 .nav-cta {
   background: var(--red); color: #fff !important;
   padding: 8px 18px !important; border-radius: 20px !important;
@@ -116,10 +103,6 @@ img { display: block; max-width: 100%; }
   font-size: .9rem; border-bottom: 1px solid rgba(255,255,255,.06);
 }
 .mob-nav a:last-child { border: none; }
-.mob-nav .tools-menu, .mob-nav .converters-menu { border-bottom: 1px solid rgba(255,255,255,.06); }
-.mob-nav .dropdown-trigger { width: 100%; padding: .65rem .5rem; text-align: left; color: rgba(255,255,255,.7); border-radius: 0; }
-.mob-nav .dropdown-list { position: static; min-width: 0; padding: 0 0 .4rem .8rem; border: 0; box-shadow: none; }
-.mob-nav .dropdown-list a { padding: .45rem .5rem; font-size: .83rem; }
 
 /* ── HERO ── */
 .hero {
@@ -323,6 +306,7 @@ img { display: block; max-width: 100%; }
   border-bottom: 1px solid var(--border);
 }
 .marquee-track {
+  will-change: transform;
   display: flex; gap: 0; animation: marquee 28s linear infinite;
   width: max-content;
 }
@@ -603,4 +587,22 @@ footer {
   .uc-grid { grid-template-columns: repeat(2, 1fr); }
   .font-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+/* Prevent CLS during font card loading */
+#fontGrid:empty::before {
+  content: '';
+  display: block;
+  min-height: 400px;
+}
+.font-card {
+  contain: layout style;
+}
+/* Ad slot reserved space */
+.adsbygoogle {
+  display: block;
+  min-height: 100px;
+}
+ins[data-ad-format="autorelaxed"] {
+  min-height: 200px;
 }
