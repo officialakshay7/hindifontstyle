@@ -155,12 +155,12 @@ document.addEventListener('DOMContentLoaded', () => {
     l.rel = 'stylesheet'; l.href = url;
     document.head.appendChild(l);
     if (pendingFonts.length) setTimeout(flushFontBatch, 100);
-  };
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(doLoad, { timeout: 2000 });
-    } else {
-      setTimeout(doLoad, 0);
-    }
+  }
+
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(doLoad, { timeout: 2000 });
+  } else {
+    setTimeout(doLoad, 0);
   }
 
   // function getText() { return inp.value.trim() || 'नमस्ते भारत'; }
