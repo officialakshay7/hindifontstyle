@@ -99,13 +99,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (cntEl) cntEl.textContent = STYLES.length + ' styles';
 
+  var _pendingFonts = [];
+  var _fontTimer = null;
   function loadFont(fam) {
     if (loaded.has(fam)) return;
     loaded.add(fam);
-    const l = document.createElement('link');
-    l.rel = 'stylesheet';
-    l.href = 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(fam) + '&display=swap';
+    _pendingFonts.push(fam);
+    clearTimeout(_fontTimer);
+    _fontTimer = setTimeout(_flushFonts, 50);
+  }
+  function _flushFonts() {
+    if (!_pendingFonts.length) return;
+    var batch = _pendingFonts.splice(0, 8);
+    var url = 'https://fonts.googleapis.com/css2?' +
+      batch.map(function(f) { return 'family=' + encodeURIComponent(f); }).join('&') +
+      '&display=swap';
+    var l = document.createElement('link');
+    l.rel = 'stylesheet'; l.href = url;
     document.head.appendChild(l);
+    if (_pendingFonts.length) setTimeout(_flushFonts, 80);
   }
 
   // Simple English-to-Hindi transliteration map
