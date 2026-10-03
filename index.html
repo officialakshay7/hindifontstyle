@@ -39,12 +39,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap"></noscript></noscript>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap"></noscript>
   <!-- Marquee fonts (preloaded to prevent flash) -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Modak&family=Kalam:wght@400;700&family=Teko:wght@600&family=Rozha+One&family=Yatra+One&family=Srikhand&family=Baloo+2:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="preload" href="https://fonts.googleapis.com/css2?family=Modak&family=Kalam:wght@400;700&family=Teko:wght@600&family=Rozha+One&family=Yatra+One&family=Srikhand&family=Baloo+2:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Modak&family=Kalam:wght@400;700&family=Teko:wght@600&family=Rozha+One&family=Yatra+One&family=Srikhand&family=Baloo+2:wght@700&display=swap"></noscript></noscript>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Modak&family=Kalam:wght@400;700&family=Teko:wght@600&family=Rozha+One&family=Yatra+One&family=Srikhand&family=Baloo+2:wght@700&display=swap"></noscript>
   <!-- Font Awesome 6 CDN -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
@@ -797,7 +795,7 @@
       </p>
 
       <p>
-        From clean Unicode sans-serif fonts for official documents to decorative
+        From free hindi font download options to decorative
         Hindi calligraphy fonts for wedding invitations and festive posters — every
         Hindi font style in our collection is free, open-source, and ready to use.
       </p>
@@ -852,6 +850,7 @@
           <h4>Blog</h4>
           <ul>
             <li><a href="/blog/">All Articles</a></li>
+            <li><a href="/blog/hindi-font-download">Hindi Font Download</a></li>
             <li><a href="/blog/hindi-calligraphy-fonts">Calligraphy Fonts</a></li>
             <li><a href="/blog/best-hindi-fonts">Best Hindi Fonts</a></li>
             <li><a href="/blog/kruti-dev-font-download">Kruti Dev Guide</a></li>
@@ -879,8 +878,14 @@
   <script src="/assets/js/generator.js" defer></script>
   <script>
     /* Load marquee fonts */
-    const mFonts = ['Noto Sans Devanagari', 'Modak', 'Kalam', 'Teko', 'Rozha One', 'Yatra One', 'Srikhand', 'Baloo 2'];
-    mFonts.forEach(f => { const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(f) + '&display=swap'; document.head.appendChild(l); });
+    /* Load all marquee fonts in ONE batched request */
+    (function() {
+      var mFonts = ['Noto+Sans+Devanagari','Modak','Kalam:wght@400;700','Teko:wght@600','Rozha+One','Yatra+One','Srikhand','Baloo+2:wght@700'];
+      var l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = 'https://fonts.googleapis.com/css2?' + mFonts.map(function(f){return 'family='+f;}).join('&') + '&display=swap';
+      document.head.appendChild(l);
+    })();
     /* Sync second pag display */
     document.addEventListener('DOMContentLoaded', () => {
       const obs = new MutationObserver(() => {
