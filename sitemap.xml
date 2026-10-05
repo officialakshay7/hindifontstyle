@@ -11,6 +11,12 @@
     <priority>1.00</priority>
   </url>
   <url>
+    <loc>https://hindifontstyle.co.in/fonts/</loc>
+    <lastmod>2026-09-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
     <loc>https://hindifontstyle.co.in/fonts/unicode-converter</loc>
     <lastmod>2026-09-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -18,6 +24,12 @@
   </url>
   <url>
     <loc>https://hindifontstyle.co.in/fonts/krutidev-converter</loc>
+    <lastmod>2026-09-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://hindifontstyle.co.in/tools/</loc>
     <lastmod>2026-09-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
