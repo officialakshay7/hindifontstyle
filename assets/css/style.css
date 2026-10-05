@@ -77,6 +77,7 @@ img { display: block; max-width: 100%; }
   border: 0; background: none; color: rgba(255,255,255,.65); font: inherit;
   font-size: .82rem; padding: 6px 12px; border-radius: 20px; letter-spacing: .2px;
 }
+.dropdown-trigger.active { color: #fff; }
 .dropdown-trigger:hover, .tools-menu.open .dropdown-trigger, .converters-menu.open .dropdown-trigger { color: #fff; background: rgba(255,255,255,.08); }
 .dropdown-trigger span { color: var(--red); margin-left: 3px; }
 .dropdown-list {

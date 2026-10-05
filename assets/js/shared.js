@@ -1,6 +1,9 @@
-/* shared.js — nav, hamburger, faq */
+/* shared.js — shared navigation, footer, hamburger, and FAQ */
 document.addEventListener('DOMContentLoaded', () => {
-
+  const converters = [
+    ['Unicode Converter', '/fonts/unicode-converter'],
+    ['Kruti Dev Converter', '/fonts/krutidev-converter']
+  ];
   const tools = [
     ['Hindi Fancy Text', '/tools/hindi-fancy-text'],
     ['Hindi Keyboard', '/tools/hindi-keyboard'],
@@ -15,62 +18,136 @@ document.addEventListener('DOMContentLoaded', () => {
     ['BGMI Name Generator', '/tools/bgmi-name-generator'],
     ['Marathi Font Generator', '/tools/marathi-font-generator']
   ];
-  const converters = [
-    ['Unicode Converter', '/fonts/unicode-converter'],
-    ['Kruti Dev Converter', '/fonts/krutidev-converter']
-  ];
+  const path = window.location.pathname;
+  const isToolsPage = path.startsWith('/tools/');
+  const isFontsPage = path.startsWith('/fonts/');
+  const isBlogPage = path.startsWith('/blog/');
 
-  const addMenu = (nav, className, label, links, reference) => {
-    const menu = document.createElement(nav.classList.contains('nav-links') ? 'li' : 'div');
+  const makeMenu = (className, label, indexHref, links, isDesktop) => {
+    const menu = document.createElement(isDesktop ? 'li' : 'div');
     menu.className = className;
     const trigger = document.createElement('button');
     trigger.className = 'dropdown-trigger';
     trigger.type = 'button';
     trigger.setAttribute('aria-expanded', 'false');
     trigger.innerHTML = `${label} <span aria-hidden="true">⏷</span>`;
+    if ((className === 'tools-menu' && isToolsPage) || (className === 'converters-menu' && isFontsPage)) {
+      trigger.classList.add('active');
+    }
     const list = document.createElement('div');
     list.className = 'dropdown-list';
-    links.forEach(([linkLabel, href]) => {
+    [[`All ${label}`, indexHref], ...links].forEach(([linkLabel, href]) => {
       const link = document.createElement('a');
       link.href = href;
       link.textContent = linkLabel;
       list.appendChild(link);
     });
     menu.append(trigger, list);
-    reference.after(menu);
     trigger.addEventListener('click', () => {
       const open = menu.classList.toggle('open');
       trigger.setAttribute('aria-expanded', open);
     });
-    return menu;
+    return { menu, trigger };
   };
 
-  document.querySelectorAll('.nav-links, .mob-nav').forEach(nav => {
-    if (nav.querySelector('.converters-menu')) return;
-    const unicodeLink = [...nav.querySelectorAll('a')].find(a => a.href.includes('/fonts/unicode-converter'));
-    const krutiLink = [...nav.querySelectorAll('a')].find(a => a.href.includes('/fonts/krutidev-converter'));
-    if (!unicodeLink || !krutiLink) return;
-    const unicodeItem = unicodeLink.closest('li, .mob-nav > a');
-    const krutiItem = krutiLink.closest('li, .mob-nav > a');
-    const convertersMenu = addMenu(nav, 'converters-menu', 'Converters', converters, unicodeItem);
-    unicodeItem.remove();
-    krutiItem.remove();
-    addMenu(nav, 'tools-menu', 'Tools', tools, convertersMenu);
+  const makeLinks = links => links.map(([label, href]) =>
+    `<li><a href="${href}">${label}</a></li>`).join('');
+
+  document.querySelectorAll('nav.nav').forEach(nav => {
+    nav.className = 'nav';
+    nav.setAttribute('role', 'navigation');
+    nav.setAttribute('aria-label', 'Main navigation');
+    nav.innerHTML = `
+      <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="HindiFontStyle Home"><span class="hi">हिंदी</span>FontStyle<span class="dot">·</span>co.in</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <ul class="nav-links" role="list">
+          <li><a href="/">Home</a></li>
+          <li class="converters-placeholder"></li>
+          <li class="tools-placeholder"></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/pages/about-us">About</a></li>
+          <li><a href="/pages/contact-us">Contact</a></li>
+          <li><a href="/#generator" class="nav-cta">Generate →</a></li>
+        </ul>
+      </div>
+      <div class="mob-nav" id="mobNav" aria-hidden="true">
+        <a href="/">Home</a>
+        <div class="converters-placeholder"></div>
+        <div class="tools-placeholder"></div>
+        <a href="/blog/">Blog</a>
+        <a href="/pages/about-us">About Us</a>
+        <a href="/pages/contact-us">Contact</a>
+        <a href="/#generator">Generate Fonts →</a>
+      </div>`;
+
+    const desktopLinks = nav.querySelector('.nav-links');
+    const mobileLinks = nav.querySelector('.mob-nav');
+    [
+      [desktopLinks, true, 'converters-placeholder', 'converters-menu', 'Converters', '/fonts/', converters],
+      [desktopLinks, true, 'tools-placeholder', 'tools-menu', 'Tools', '/tools/', tools],
+      [mobileLinks, false, 'converters-placeholder', 'converters-menu', 'Converters', '/fonts/', converters],
+      [mobileLinks, false, 'tools-placeholder', 'tools-menu', 'Tools', '/tools/', tools]
+    ].forEach(([parent, isDesktop, placeholderClass, menuClass, label, indexHref, links]) => {
+      const placeholder = parent.querySelector(`.${placeholderClass}`);
+      const { menu, trigger } = makeMenu(menuClass, label, indexHref, links, isDesktop);
+      placeholder.replaceWith(menu);
+      if ((menuClass === 'tools-menu' && isToolsPage) ||
+          (menuClass === 'converters-menu' && isFontsPage) ||
+          (label === 'Blog' && isBlogPage)) {
+        trigger.classList.add('active');
+      }
+    });
+
+    nav.querySelectorAll('.nav-links a, .mob-nav a').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === path || (href === '/blog/' && isBlogPage)) link.classList.add('active');
+    });
   });
 
-  /* Keep every footer's Tools section complete, including compact footers. */
-  const toolLinks = () => tools.map(([label, href]) => `<li><a href="${href}">${label}</a></li>`).join('');
   document.querySelectorAll('footer').forEach(footer => {
-    const heading = [...footer.querySelectorAll('h4')].find(h => h.textContent.trim() === 'Tools');
-    if (heading) {
-      const list = heading.nextElementSibling;
-      if (list && list.tagName === 'UL') list.innerHTML = `<li><a href="/#generator">Font Generator</a></li><li><a href="/fonts/unicode-converter">Unicode Converter</a></li><li><a href="/fonts/krutidev-converter">Kruti Dev Converter</a></li>${toolLinks()}`;
-      return;
-    }
-    const section = document.createElement('div');
-    section.className = 'footer-tools';
-    section.innerHTML = `<strong>Tools</strong><div>${toolLinks().replace(/<li>/g, '').replace(/<\/li>/g, '')}</div>`;
-    footer.appendChild(section);
+    footer.removeAttribute('style');
+    footer.className = '';
+    footer.setAttribute('role', 'contentinfo');
+    footer.innerHTML = `
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="footer-logo"><span>हिंदी</span>FontStyle.co.in</div>
+            <p class="footer-tagline">Free Hindi font generators, converters, and online tools for Hindi and Marathi text.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Tools</h4>
+            <ul>
+              <li><a href="/tools/">All Tools</a></li>
+              <li><a href="/#generator">Hindi Font Generator</a></li>
+              ${makeLinks(tools)}
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Converters</h4>
+            <ul>
+              <li><a href="/fonts/">All Converters</a></li>
+              ${makeLinks(converters)}
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="/blog/">Blog &amp; Guides</a></li>
+              <li><a href="/pages/about-us">About Us</a></li>
+              <li><a href="/pages/contact-us">Contact</a></li>
+              <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
+              <li><a href="/pages/terms-and-conditions">Terms &amp; Conditions</a></li>
+              <li><a href="/pages/disclaimer">Disclaimer</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 HindiFontStyle.co.in — Free Hindi tools for everyone.</span>
+          <span>Fonts open-source · OFL &amp; Apache 2.0</span>
+        </div>
+      </div>`;
   });
 
   /* Hamburger */
@@ -81,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const o = hb.classList.toggle('open');
       hb.setAttribute('aria-expanded', o);
       mn.style.display = o ? 'block' : 'none';
+      mn.setAttribute('aria-hidden', String(!o));
     });
   }
 
@@ -92,14 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const ans = btn.nextElementSibling;
       if (ans) ans.classList.toggle('show', isOpen);
     });
-  });
-
-  /* Active nav link */
-  const path = window.location.pathname;
-  document.querySelectorAll('.nav-links a, .mob-nav a').forEach(a => {
-    if (a.getAttribute('href') === path || (path.includes('/blog/') && a.getAttribute('href') === '/blog/')) {
-      a.classList.add('active');
-    }
   });
 
   /* Scroll-reveal (simple IntersectionObserver) */
