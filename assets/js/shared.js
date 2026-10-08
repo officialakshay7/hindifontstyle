@@ -1,8 +1,8 @@
 /* shared.js — shared navigation, footer, hamburger, and FAQ */
 document.addEventListener('DOMContentLoaded', () => {
   const converters = [
-    ['Unicode Converter', '/fonts/unicode-converter'],
-    ['Kruti Dev Converter', '/fonts/krutidev-converter']
+    ['Kruti Dev to Unicode', '/fonts/krutidev-converter'],
+    ['Unicode to Kruti Dev', '/fonts/unicode-converter']
   ];
   const tools = [
     ['Hindi Fancy Text', '/tools/hindi-fancy-text'],
@@ -132,6 +132,17 @@ document.addEventListener('DOMContentLoaded', () => {
             </ul>
           </div>
           <div class="footer-col">
+            <h4>Guides</h4>
+            <ul>
+              <li><a href="/blog/best-hindi-fonts">Best Hindi Fonts</a></li>
+              <li><a href="/blog/hindi-font-download">Hindi Font Download</a></li>
+              <li><a href="/blog/hindi-calligraphy-fonts">Hindi Calligraphy Fonts</a></li>
+              <li><a href="/blog/stylish-hindi-fonts-instagram-whatsapp">Stylish Fonts for Instagram</a></li>
+              <li><a href="/blog/kruti-dev-font-download">Kruti Dev Font Guide</a></li>
+              <li><a href="/blog/fix-hindi-text-showing-boxes-question-marks">Fix Hindi Showing as Boxes</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
             <h4>Explore</h4>
             <ul>
               <li><a href="/blog/">Blog &amp; Guides</a></li>
@@ -181,3 +192,64 @@ document.addEventListener('DOMContentLoaded', () => {
     els.forEach(el => io.observe(el));
   }
 });
+
+/* ── Cookie consent (all pages) ───────────────────────────────────────
+   Choice is stored in the hfs_cookie_consent cookie: all | necessary | declined.
+   Each page's <head> reads it BEFORE ads/analytics load:
+   - not "all" → AdSense serves non-personalised ads
+   - Google Analytics runs in Consent Mode (analytics/ad storage denied)
+   Accept All grants consent for this page view and future ones. */
+(function () {
+  function getConsent() {
+    var m = document.cookie.match(/(?:^|;\s*)hfs_cookie_consent=(\w+)/);
+    return m ? m[1] : null;
+  }
+  function setConsent(v) {
+    document.cookie = 'hfs_cookie_consent=' + v + ';max-age=31536000;path=/;SameSite=Lax;Secure';
+    var granted = v === 'all' ? 'granted' : 'denied';
+    if (window.gtag) {
+      window.gtag('consent', 'update', {
+        analytics_storage: granted, ad_storage: granted,
+        ad_user_data: granted, ad_personalization: granted
+      });
+    }
+    hide();
+  }
+  function hide() {
+    var b = document.getElementById('cookieBanner');
+    if (!b) return;
+    document.body.classList.remove('cookie-open');
+    b.style.animation = 'none';
+    b.style.transition = 'opacity 0.25s, transform 0.25s';
+    b.style.opacity = '0';
+    b.style.transform = 'translateY(30px)';
+    setTimeout(function () { b.remove(); }, 300);
+  }
+  function show() {
+    if (getConsent()) return;
+    var b = document.createElement('div');
+    b.id = 'cookieBanner';
+    b.setAttribute('role', 'dialog');
+    b.setAttribute('aria-label', 'Cookie consent');
+    b.innerHTML =
+      '<div class="cookie-inner">' +
+        '<div class="cookie-icon" aria-hidden="true">🍪</div>' +
+        '<div class="cookie-text"><strong>We use cookies</strong>' +
+          '<p>We use Google Analytics and Google AdSense. Until you click <em>Accept All</em>, ads are not ' +
+          'personalised and analytics cookies are not set. Read our <a href="/pages/privacy-policy">Privacy Policy</a>.</p></div>' +
+        '<div class="cookie-actions">' +
+          '<button type="button" class="btn-accept" data-c="all">Accept All</button>' +
+          '<button type="button" class="btn-necessary" data-c="necessary">Necessary Only</button>' +
+          '<button type="button" class="btn-decline" data-c="declined">Decline</button>' +
+        '</div>' +
+      '</div>';
+    b.addEventListener('click', function (e) {
+      var v = e.target && e.target.getAttribute('data-c');
+      if (v) setConsent(v);
+    });
+    document.body.appendChild(b);
+    document.body.classList.add('cookie-open');
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', show);
+  else show();
+})();

@@ -1,24 +1,26 @@
 /*
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
-  X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Permissions-Policy: camera=(), geolocation=(), microphone=()
 
-/*.html
-  Cache-Control: public, max-age=3600, must-revalidate
+# Voice typing needs the microphone on this page only (the site-wide rule above blocked it)
+/tools/hindi-voice-typing
+  ! Permissions-Policy
+  Permissions-Policy: camera=(), geolocation=(), microphone=(self)
 
+# CSS/JS file names are not fingerprinted, so they must NOT be "immutable":
+# a 1-year immutable cache means returning visitors never see a deploy.
+# Bump the ?v= query string in the HTML when you change a file.
 /assets/css/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 
 /assets/js/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 
 /assets/img/*
   Cache-Control: public, max-age=2592000
-
-/assets/font/*
-  Cache-Control: public, max-age=31536000, immutable
 
 /sitemap.xml
   Cache-Control: public, max-age=86400
@@ -26,5 +28,6 @@
 /robots.txt
   Cache-Control: public, max-age=86400
 
-/404.html
-  Cache-Control: public, max-age=3600
+# Keep the preview deployment (*.pages.dev) out of Google; the custom domain is canonical
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex

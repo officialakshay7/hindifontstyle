@@ -9,7 +9,6 @@
   <meta name="keywords" content="hindi font, hindi font generator, hindifontstyle">
   <meta name="author" content="HindiFontStyle.co.in">
   <meta name="robots" content="noindex, follow">
-  <link rel="canonical" href="https://hindifontstyle.co.in/404">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hindifontstyle.co.in/404">
   <meta property="og:title" content="Page Not Found — HindiFontStyle.co.in">
@@ -18,7 +17,7 @@
   <meta property="og:image" content="https://hindifontstyle.co.in/assets/img/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="hi_IN">
+  <meta property="og:locale" content="en_IN">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://hindifontstyle.co.in/404">
   <meta name="twitter:title" content="Page Not Found — HindiFontStyle.co.in">
@@ -30,10 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap"></noscript>
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
-  <link rel="preload" href="/assets/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/assets/css/style.css"></noscript>
+  <link rel="stylesheet" href="/assets/css/style.css?v=3">
   <style>
     .err-wrap {
       min-height: calc(100vh - 64px);
@@ -123,7 +119,7 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    gtag('consent', 'default', { analytics_storage: window.hfsConsentAll ? 'granted' : 'denied', ad_storage: window.hfsConsentAll ? 'granted' : 'denied', ad_user_data: window.hfsConsentAll ? 'granted' : 'denied', ad_personalization: window.hfsConsentAll ? 'granted' : 'denied' }); gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX');
   </script>
   <meta name="theme-color" content="#CD2C58">
@@ -133,6 +129,14 @@
 </script>
 
   <!-- adsense code snippet -->
+  <script>
+    /* consent gate — see shared.js */
+    (function () {
+      var m = document.cookie.match(/(?:^|;\s*)hfs_cookie_consent=(\w+)/);
+      window.hfsConsentAll = !!(m && m[1] === 'all');
+      if (!window.hfsConsentAll) (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+    })();
+  </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7065310966580167"
     crossorigin="anonymous"></script>
 
@@ -142,18 +146,29 @@
 </head>
 
 <body>
-  <nav class="nav">
-    <div class="nav-inner"><a href="/" class="nav-logo"><span class="hi">हिंदी</span>FontStyle<span
-          class="dot">·</span>co.in</a>
-      <div class="nav-links-wrap" style="display:flex;gap:4px"><a href="/"
-          style="color:rgba(255,255,255,.65);font-size:.85rem;padding:6px 12px;border-radius:20px;text-decoration:none">Home</a><a
-          href="/blog/"
-          style="color:rgba(255,255,255,.65);font-size:.85rem;padding:6px 12px;border-radius:20px;text-decoration:none">Blog</a><a
-          href="/#generator"
-          style="background:var(--red);color:#fff;font-size:.85rem;padding:8px 18px;border-radius:20px;text-decoration:none;font-weight:500">Generate
-          →</a></div>
-    </div>
-  </nav>
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="HindiFontStyle Home"><span class="hi">हिंदी</span>FontStyle<span class="dot">·</span>co.in</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <ul class="nav-links" role="list">
+          <li><a href="/">Home</a></li>
+          <li class="converters-menu"><button class="dropdown-trigger" type="button" aria-expanded="false">Converters <span aria-hidden="true">⏷</span></button><div class="dropdown-list"><a href="/fonts/">All Converters</a><a href="/fonts/krutidev-converter">Kruti Dev to Unicode</a><a href="/fonts/unicode-converter">Unicode to Kruti Dev</a></div></li>
+          <li class="tools-menu"><button class="dropdown-trigger" type="button" aria-expanded="false">Tools <span aria-hidden="true">⏷</span></button><div class="dropdown-list"><a href="/tools/">All Tools</a><a href="/tools/hindi-fancy-text">Hindi Fancy Text</a><a href="/tools/hindi-keyboard">Hindi Keyboard</a><a href="/tools/hindi-typing">Hindi Typing</a><a href="/tools/hindi-voice-typing">Hindi Voice Typing</a><a href="/tools/hindi-to-english">Hindi to English</a><a href="/tools/hindi-text-speech">Hindi Text to Speech</a><a href="/tools/hindi-text-image">Hindi Text Image</a><a href="/tools/hindi-lorem-ipsum">Hindi Lorem Ipsum</a><a href="/tools/hindi-word-counter">Hindi Word Counter</a><a href="/tools/hindi-character-limit">Hindi Character Limit</a><a href="/tools/bgmi-name-generator">BGMI Name Generator</a><a href="/tools/marathi-font-generator">Marathi Font Generator</a></div></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/pages/about-us">About</a></li>
+          <li><a href="/pages/contact-us">Contact</a></li>
+          <li><a href="/#generator" class="nav-cta">Generate →</a></li>
+        </ul>
+      </div>
+      <div class="mob-nav" id="mobNav" aria-hidden="true">
+        <a href="/">Home</a>
+        <div class="converters-menu"><button class="dropdown-trigger" type="button" aria-expanded="false">Converters <span aria-hidden="true">⏷</span></button><div class="dropdown-list"><a href="/fonts/">All Converters</a><a href="/fonts/krutidev-converter">Kruti Dev to Unicode</a><a href="/fonts/unicode-converter">Unicode to Kruti Dev</a></div></div>
+        <div class="tools-menu"><button class="dropdown-trigger" type="button" aria-expanded="false">Tools <span aria-hidden="true">⏷</span></button><div class="dropdown-list"><a href="/tools/">All Tools</a><a href="/tools/hindi-fancy-text">Hindi Fancy Text</a><a href="/tools/hindi-keyboard">Hindi Keyboard</a><a href="/tools/hindi-typing">Hindi Typing</a><a href="/tools/hindi-voice-typing">Hindi Voice Typing</a><a href="/tools/hindi-to-english">Hindi to English</a><a href="/tools/hindi-text-speech">Hindi Text to Speech</a><a href="/tools/hindi-text-image">Hindi Text Image</a><a href="/tools/hindi-lorem-ipsum">Hindi Lorem Ipsum</a><a href="/tools/hindi-word-counter">Hindi Word Counter</a><a href="/tools/hindi-character-limit">Hindi Character Limit</a><a href="/tools/bgmi-name-generator">BGMI Name Generator</a><a href="/tools/marathi-font-generator">Marathi Font Generator</a></div></div>
+        <a href="/blog/">Blog</a>
+        <a href="/pages/about-us">About Us</a>
+        <a href="/pages/contact-us">Contact</a>
+        <a href="/#generator">Generate Fonts →</a>
+      </div></nav>
 
   <div class="err-wrap">
     <div class="err-inner">
@@ -166,13 +181,13 @@
         <a href="/" class="err-link primary">← Back to Homepage</a>
         <a href="/#generator" class="err-link ghost">Font Generator</a>
         <a href="/blog/" class="err-link ghost">Blog</a>
-        <a href="/fonts/unicode-converter" class="err-link ghost">Unicode Converter</a>
+        <a href="/tools/hindi-typing" class="err-link ghost">Hindi Typing</a>
       </div>
     </div>
   </div>
 
   <!-- HFS - Display Responsive -->
-<div style="text-align:center;padding:.5rem 0;min-height:90px;display:flex;align-items:center;justify-content:center">
+<div class="ad-slot" style="text-align:center;padding:.5rem 0;display:flex;align-items:center;justify-content:center">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-7065310966580167"
@@ -182,13 +197,57 @@
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
-  <footer role="contentinfo"
-    style="background:#111009;border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2rem;text-align:center;font-size:.78rem;color:rgba(255,255,255,.25)">
-    <p>© 2026 HindiFontStyle.co.in &nbsp;·&nbsp; <a href="/" style="color:rgba(255,255,255,.35)">Home</a> &nbsp;·&nbsp;
-      <a href="/pages/privacy-policy" style="color:rgba(255,255,255,.35)">Privacy</a> &nbsp;·&nbsp; <a
-        href="/pages/contact-us" style="color:rgba(255,255,255,.35)">Contact</a></p>
-  </footer>
-  <script src="/assets/js/shared.js" defer></script>
+  <footer role="contentinfo" class="">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="footer-logo"><span>हिंदी</span>FontStyle.co.in</div>
+            <p class="footer-tagline">Free Hindi font generators, converters, and online tools for Hindi and Marathi text.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Tools</h4>
+            <ul>
+              <li><a href="/tools/">All Tools</a></li>
+              <li><a href="/#generator">Hindi Font Generator</a></li>
+              <li><a href="/tools/hindi-fancy-text">Hindi Fancy Text</a></li><li><a href="/tools/hindi-keyboard">Hindi Keyboard</a></li><li><a href="/tools/hindi-typing">Hindi Typing</a></li><li><a href="/tools/hindi-voice-typing">Hindi Voice Typing</a></li><li><a href="/tools/hindi-to-english">Hindi to English</a></li><li><a href="/tools/hindi-text-speech">Hindi Text to Speech</a></li><li><a href="/tools/hindi-text-image">Hindi Text Image</a></li><li><a href="/tools/hindi-lorem-ipsum">Hindi Lorem Ipsum</a></li><li><a href="/tools/hindi-word-counter">Hindi Word Counter</a></li><li><a href="/tools/hindi-character-limit">Hindi Character Limit</a></li><li><a href="/tools/bgmi-name-generator">BGMI Name Generator</a></li><li><a href="/tools/marathi-font-generator">Marathi Font Generator</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Converters</h4>
+            <ul>
+              <li><a href="/fonts/">All Converters</a></li>
+              <li><a href="/fonts/krutidev-converter">Kruti Dev to Unicode</a></li><li><a href="/fonts/unicode-converter">Unicode to Kruti Dev</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Guides</h4>
+            <ul>
+              <li><a href="/blog/best-hindi-fonts">Best Hindi Fonts</a></li>
+              <li><a href="/blog/hindi-font-download">Hindi Font Download</a></li>
+              <li><a href="/blog/hindi-calligraphy-fonts">Hindi Calligraphy Fonts</a></li>
+              <li><a href="/blog/stylish-hindi-fonts-instagram-whatsapp">Stylish Fonts for Instagram</a></li>
+              <li><a href="/blog/kruti-dev-font-download">Kruti Dev Font Guide</a></li>
+              <li><a href="/blog/fix-hindi-text-showing-boxes-question-marks">Fix Hindi Showing as Boxes</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="/blog/">Blog &amp; Guides</a></li>
+              <li><a href="/pages/about-us">About Us</a></li>
+              <li><a href="/pages/contact-us">Contact</a></li>
+              <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
+              <li><a href="/pages/terms-and-conditions">Terms &amp; Conditions</a></li>
+              <li><a href="/pages/disclaimer">Disclaimer</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 HindiFontStyle.co.in — Free Hindi tools for everyone.</span>
+          <span>Fonts open-source · OFL &amp; Apache 2.0</span>
+        </div>
+      </div></footer>
+  <script src="/assets/js/shared.js?v=3" defer></script>
 </body>
 
 </html>

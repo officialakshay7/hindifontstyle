@@ -75,9 +75,16 @@ document.addEventListener('DOMContentLoaded', () => {
     {k:'3d',      cls:'style-3d',        suffix:' 3D',      on:['Modak','Baloo 2','Teko','Rozha One','Srikhand']},
     {k:'shadow',  cls:'style-shadow',    suffix:' Shadow',  on:['Poppins','Kalam','Ranga','Gotu']},
     {k:'outline', cls:'style-outline',   suffix:' Outline', on:['Baloo 2','Teko','Modak','Srikhand']},
-    {k:'hearts',  cls:'style-hearts',    suffix:' ♥',       on:['Kalam','Amita','Laila','Tillana','Dekko']},
-    {k:'stars',   cls:'style-stars',     suffix:' ★',       on:['Kalam','Amita','Laila','Tillana','Dekko']},
-    {k:'brackets',cls:'style-brackets',  suffix:' 【】',    on:['Noto Sans Devanagari','Hind','Rajdhani']},
+    {k:'hearts',  cls:'', pre:'♥ ', post:' ♥',  suffix:' ♥',     on:['Kalam','Amita','Laila','Tillana','Dekko']},
+    {k:'stars',   cls:'', pre:'★ ', post:' ★',  suffix:' ★',     on:['Kalam','Amita','Laila','Tillana','Dekko']},
+    {k:'brackets',cls:'', pre:'【', post:'】',  suffix:' 【】',   on:['Noto Sans Devanagari','Hind','Rajdhani']},
+    /* Unicode decorations: real characters, so they survive copy-paste */
+    {k:'royal',   cls:'', pre:'꧁ ', post:' ꧂', suffix:' ꧁꧂',   on:['Noto Sans Devanagari','Kalam']},
+    {k:'wave',    cls:'', pre:'★彡 ', post:' 彡★', suffix:' 彡',  on:['Noto Sans Devanagari','Kalam']},
+    {k:'ribbon',  cls:'', pre:'•°¯`•• ', post:' ••´¯°•', suffix:' •°•', on:['Noto Sans Devanagari','Kalam']},
+    {k:'flower',  cls:'', pre:'✿ ', post:' ✿',  suffix:' ✿',     on:['Noto Sans Devanagari','Kalam']},
+    {k:'sparkle', cls:'', pre:'✨ ', post:' ✨', suffix:' ✨',     on:['Noto Sans Devanagari','Kalam']},
+    {k:'frame',   cls:'', pre:'『', post:'』',  suffix:' 『』',   on:['Noto Sans Devanagari','Kalam']},
     {k:'under',   cls:'style-underline', suffix:' Line',    on:['Poppins','Hind','Mukta','Tiro Devanagari Hindi']},
     {k:'bold',    cls:'style-bold',      suffix:' Bold',    on:['Noto Sans Devanagari','Hind','Mukta','Poppins']},
     {k:'italic',  cls:'style-italic',    suffix:' Italic',  on:['Tiro Devanagari Hindi','Karma','Martel','Sahitya']},
@@ -88,16 +95,17 @@ document.addEventListener('DOMContentLoaded', () => {
   BASE.forEach(b => STYLES.push({lbl:b.n, fam:b.f, cls:'', tag:b.t}));
   EFFECTS.forEach(e => {
     BASE.filter(b => e.on.includes(b.f)).forEach(b => {
-      STYLES.push({lbl:b.n+e.suffix, fam:b.f, cls:e.cls, tag:'effect'});
+      STYLES.push({lbl:b.n+e.suffix, fam:b.f, cls:e.cls, tag:'effect', pre:e.pre||'', post:e.post||''});
     });
   });
 
+  const deco = (s, t) => (s.pre || '') + t + (s.post || '');
   const PER = 12;
   let page = 1;
   const tot = () => Math.ceil(STYLES.length / PER);
   const loaded = new Set();
 
-  if (cntEl) cntEl.textContent = STYLES.length + ' styles';
+  if (cntEl) cntEl.textContent = STYLES.length;
 
   var _pendingFonts = [];
   var _fontTimer = null;
@@ -141,6 +149,7 @@ function isHindi(text) {
 }
 
 function transliterate(text) {
+  if (window.HFSTranslit) return window.HFSTranslit.text(text);
   if (!text || isHindi(text)) return text;
   var lower = text.toLowerCase().trim();
   // 1. Check full phrase match first
@@ -159,6 +168,22 @@ function getText() {
   if (!raw) return 'नमस्ते भारत';
   return transliterate(raw) || raw;
 }
+
+  /* html2canvas is loaded on demand the first time an image is exported */
+  function ensureH2C() {
+    return new Promise(function (resolve, reject) {
+      if (window.html2canvas) return resolve();
+      var s = document.querySelector('script[data-h2c]');
+      if (!s) {
+        s = document.createElement('script');
+        s.src = '/assets/js/vendor/html2canvas.min.js';
+        s.async = true; s.setAttribute('data-h2c', '1');
+        document.head.appendChild(s);
+      }
+      s.addEventListener('load', function () { resolve(); });
+      s.addEventListener('error', function () { reject(new Error('html2canvas failed to load')); });
+    });
+  }
 
   const TAG_LABELS = {display:'Display', serif:'Serif', sans:'Sans', calli:'Calligraphy', effect:'Effect'};
 
@@ -181,21 +206,24 @@ function getText() {
       const prev = document.createElement('div');
       prev.className = 'fc-preview' + (s.cls ? ' '+s.cls : '');
       prev.style.fontFamily = `'${s.fam}', sans-serif`;
-      prev.textContent = t;
+      prev.textContent = deco(s, t);
+      prev.dataset.pre = s.pre || ''; prev.dataset.post = s.post || '';
 
       const btns = document.createElement('div'); btns.className = 'fc-btns';
 
       /* Copy */
       const cpBtn = mkBtn('<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy');
       cpBtn.onclick = async () => {
-        try { await navigator.clipboard.writeText(t); }
-        catch { const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta); }
+        const out = deco(s, getText());
+        try { await navigator.clipboard.writeText(out); }
+        catch { const ta=document.createElement('textarea');ta.value=out;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta); }
         cpBtn.classList.add('copied'); cpBtn.textContent = '✓ Copied';
         setTimeout(() => { cpBtn.classList.remove('copied'); cpBtn.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy'; }, 2000);
       };
 
       /* Font DL */
-      const ftBtn = mkBtn('↓ Font');
+      const ftBtn = mkBtn('↗ Get font');
+      ftBtn.title = 'Open this font on Google Fonts to download it free';
       ftBtn.onclick = () => {
         const specUrl = 'https://fonts.google.com/specimen/' + s.fam.replace(/ /g, '+');
         window.open(specUrl, '_blank', 'noopener,noreferrer');
@@ -207,19 +235,19 @@ function getText() {
       /* Image DL */
       const imgBtn = mkBtn('⬡ Image');
       imgBtn.onclick = async () => {
-        if (typeof html2canvas === 'undefined') { alert('Please wait a moment and try again.'); return; }
+        try { await ensureH2C(); } catch (e) { alert('Image export could not load. Please check your connection and try again.'); return; }
         const wrap = document.createElement('div');
         wrap.style.cssText = 'position:fixed;left:-9999px;top:0;padding:28px 36px;background:#FDFCFA';
         const p = document.createElement('p');
         p.style.cssText = `font-family:'${s.fam}',sans-serif;font-size:2.5rem;color:#1C1917;margin:0;line-height:1.3`;
         if (s.cls) p.classList.add(s.cls);
-        p.textContent = t; wrap.appendChild(p); document.body.appendChild(wrap);
+        p.textContent = deco(s, getText()); wrap.appendChild(p); document.body.appendChild(wrap);
         await document.fonts.load(`1rem "${s.fam}"`);
         const cv = await html2canvas(wrap, {backgroundColor:'#FDFCFA',scale:3,logging:false});
         document.body.removeChild(wrap);
         const a = document.createElement('a');
         a.href = cv.toDataURL('image/png');
-        a.download = 'hindi-font-'+s.lbl.replace(/[^\w]/g,'-').replace(/-+/g,'-')+'.png';
+        a.download = 'hindi-font-'+(s.fam+' '+(s.cls||'')).trim().toLowerCase().replace(/[^a-z0-9]+/g,'-')+'.png';
         a.click();
       };
 
@@ -227,20 +255,20 @@ function getText() {
       const tpngBtn = mkBtn('⬡ Transparent');
       tpngBtn.title = 'Download with transparent background';
       tpngBtn.onclick = async () => {
-        if (typeof html2canvas === 'undefined') { alert('Please wait and try again.'); return; }
+        try { await ensureH2C(); } catch (e) { alert('Image export could not load. Please check your connection and try again.'); return; }
         const wrap = document.createElement('div');
         wrap.style.cssText = 'position:fixed;left:-9999px;top:0;padding:28px 36px;background:transparent';
         const p2 = document.createElement('p');
         const tc = document.getElementById('textColorPicker');
         p2.style.cssText = `font-family:'${s.fam}',sans-serif;font-size:2.5rem;color:${tc?tc.value:'#1C1917'};margin:0;line-height:1.3`;
         if (s.cls) p2.classList.add(s.cls);
-        p2.textContent = t; wrap.appendChild(p2); document.body.appendChild(wrap);
+        p2.textContent = deco(s, getText()); wrap.appendChild(p2); document.body.appendChild(wrap);
         await document.fonts.load(`1rem "${s.fam}"`);
         const cv = await html2canvas(wrap, {backgroundColor:null, scale:3, logging:false});
         document.body.removeChild(wrap);
         const a = document.createElement('a');
         a.href = cv.toDataURL('image/png');
-        a.download = 'hindi-font-transparent-'+s.lbl.replace(/[^\w]/g,'-')+'.png';
+        a.download = 'hindi-font-transparent-'+(s.fam+' '+(s.cls||'')).trim().toLowerCase().replace(/[^a-z0-9]+/g,'-')+'.png';
         a.click();
         tpngBtn.textContent = '✓ Done';
         setTimeout(() => { tpngBtn.textContent = '⬡ Transparent'; }, 2000);
@@ -268,7 +296,7 @@ function getText() {
   /* Live text update */
   inp.addEventListener('input', () => {
     const t = getText();
-    document.querySelectorAll('.fc-preview').forEach(el => { el.textContent = t; });
+    document.querySelectorAll('.fc-preview').forEach(el => { el.textContent = (el.dataset.pre || '') + t + (el.dataset.post || ''); });
   });
 
   /* Pagination */
