@@ -29,7 +29,7 @@
   <link rel="canonical" href="https://hindifontstyle.co.in/tools/hindi-text-image">
   <link rel="icon" href="/assets/img/favicon/favicon.ico" sizes="any">
   <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet" href="/assets/css/style.css?v=3">
+  <link rel="stylesheet" href="/assets/css/style.css?v=4">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=Noto+Sans+Devanagari:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -302,16 +302,84 @@
         <div>
           <label class="tool-label">Font</label>
           <select class="tool-select" id="imgFont" onchange="renderPreview()" style="width:100%">
-            <option value="Noto Sans Devanagari">Noto Sans Devanagari</option>
-            <option value="Baloo 2">Baloo 2</option>
-            <option value="Modak">Modak</option>
-            <option value="Teko">Teko</option>
-            <option value="Kalam">Kalam</option>
-            <option value="Amita">Amita</option>
-            <option value="Hind">Hind</option>
-            <option value="Rozha One">Rozha One</option>
-            <option value="Tillana">Tillana</option>
-            <option value="Yatra One">Yatra One</option>
+            <optgroup label="Popular">
+              <option value="Noto Sans Devanagari">Noto Sans Devanagari</option>
+              <option value="Baloo 2">Baloo 2</option>
+              <option value="Modak">Modak</option>
+              <option value="Teko">Teko</option>
+              <option value="Kalam">Kalam</option>
+              <option value="Amita">Amita</option>
+              <option value="Hind">Hind</option>
+              <option value="Rozha One">Rozha One</option>
+              <option value="Tillana">Tillana</option>
+              <option value="Yatra One">Yatra One</option>
+              <option value="Gajraj One">Gajraj One</option>
+              <option value="Bakbak One">Bakbak One</option>
+            </optgroup>
+            <optgroup label="Sans-serif">
+              <option value="Akshar">Akshar</option>
+              <option value="Amiko">Amiko</option>
+              <option value="Anek Devanagari">Anek Devanagari</option>
+              <option value="Arya">Arya</option>
+              <option value="Biryani">Biryani</option>
+              <option value="Cambay">Cambay</option>
+              <option value="Google Sans">Google Sans</option>
+              <option value="Gotu">Gotu</option>
+              <option value="IBM Plex Sans Devanagari">IBM Plex Sans Devanagari</option>
+              <option value="Jaldi">Jaldi</option>
+              <option value="Khand">Khand</option>
+              <option value="Khula">Khula</option>
+              <option value="Martel Sans">Martel Sans</option>
+              <option value="Matangi">Matangi</option>
+              <option value="Mukta">Mukta</option>
+              <option value="Palanquin">Palanquin</option>
+              <option value="Palanquin Dark">Palanquin Dark</option>
+              <option value="Poppins">Poppins</option>
+              <option value="Pragati Narrow">Pragati Narrow</option>
+              <option value="Rajdhani">Rajdhani</option>
+              <option value="Sarala">Sarala</option>
+              <option value="Sarpanch">Sarpanch</option>
+              <option value="Yantramanav">Yantramanav</option>
+            </optgroup>
+            <optgroup label="Serif">
+              <option value="Annapurna SIL">Annapurna SIL</option>
+              <option value="Asar">Asar</option>
+              <option value="Eczar">Eczar</option>
+              <option value="Glegoo">Glegoo</option>
+              <option value="Halant">Halant</option>
+              <option value="Inknut Antiqua">Inknut Antiqua</option>
+              <option value="Kadwa">Kadwa</option>
+              <option value="Karma">Karma</option>
+              <option value="Kurale">Kurale</option>
+              <option value="Laila">Laila</option>
+              <option value="Martel">Martel</option>
+              <option value="Noto Serif Devanagari">Noto Serif Devanagari</option>
+              <option value="Rhodium Libre">Rhodium Libre</option>
+              <option value="Sahitya">Sahitya</option>
+              <option value="Sumana">Sumana</option>
+              <option value="Sura">Sura</option>
+              <option value="Tiro Devanagari Hindi">Tiro Devanagari Hindi</option>
+              <option value="Tiro Devanagari Marathi">Tiro Devanagari Marathi</option>
+              <option value="Tiro Devanagari Sanskrit">Tiro Devanagari Sanskrit</option>
+              <option value="Vesper Libre">Vesper Libre</option>
+            </optgroup>
+            <optgroup label="Display">
+              <option value="Alkatra">Alkatra</option>
+              <option value="Jaini">Jaini</option>
+              <option value="Jaini Purva">Jaini Purva</option>
+              <option value="Ranga">Ranga</option>
+            </optgroup>
+            <optgroup label="Handwriting & calligraphy">
+              <option value="Dekko">Dekko</option>
+              <option value="Playpen Sans Deva">Playpen Sans Deva</option>
+            </optgroup>
+          </select>
+        </div>
+        <div>
+          <label class="tool-label" for="imgWeight">Weight</label>
+          <select class="tool-select" id="imgWeight" onchange="renderPreview()" style="width:100%">
+            <option value="700">Bold</option>
+            <option value="400">Regular</option>
           </select>
         </div>
         <div>
@@ -477,18 +545,14 @@
     (function () { var loaded = false; function loadGA() { if (loaded) return; loaded = true; var s = document.createElement('script'); s.src = 'https://www.googletagmanager.com/gtag/js?id=G-939TE05121'; s.async = true; document.head.appendChild(s); window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('consent', 'default', { analytics_storage: window.hfsConsentAll ? 'granted' : 'denied', ad_storage: window.hfsConsentAll ? 'granted' : 'denied', ad_user_data: window.hfsConsentAll ? 'granted' : 'denied', ad_personalization: window.hfsConsentAll ? 'granted' : 'denied' }); gtag('js', new Date()); gtag('config', 'G-939TE05121', { 'transport_type': 'beacon', 'send_page_view': true }); window.gtag = gtag; } window.addEventListener('scroll', loadGA, { once: true, passive: true }); window.addEventListener('click', loadGA, { once: true, passive: true }); window.addEventListener('touchstart', loadGA, { once: true, passive: true }); setTimeout(loadGA, 5000); })();
   </script>
   <script>
-    var GFONTS = {
-      'Modak': 'Modak', 'Baloo 2': 'Baloo+2:wght@700', 'Teko': 'Teko:wght@600',
-      'Kalam': 'Kalam:wght@700', 'Amita': 'Amita:wght@700', 'Rozha One': 'Rozha+One',
-      'Tillana': 'Tillana', 'Yatra One': 'Yatra+One', 'Hind': 'Hind:wght@600',
-      'Noto Sans Devanagari': 'Noto+Sans+Devanagari:wght@700'
-    };
+    /* every Google Fonts family with Devanagari, with the weights we load (regular + bold) */
+    var GFONTS = {'Akshar': [400,700], 'Alkatra': [400,700], 'Amiko': [400,700], 'Amita': [400,700], 'Anek Devanagari': [400,700], 'Annapurna SIL': [400,700], 'Arya': [400,700], 'Asar': [400], 'Bakbak One': [400], 'Baloo 2': [400,700], 'Biryani': [400,700], 'Cambay': [400,700], 'Dekko': [400], 'Eczar': [400,700], 'Gajraj One': [400], 'Glegoo': [400,700], 'Google Sans': [400,700], 'Gotu': [400], 'Halant': [400,700], 'Hind': [400,700], 'IBM Plex Sans Devanagari': [400,700], 'Inknut Antiqua': [400,700], 'Jaini': [400], 'Jaini Purva': [400], 'Jaldi': [400,700], 'Kadwa': [400,700], 'Kalam': [400,700], 'Karma': [400,700], 'Khand': [400,700], 'Khula': [400,700], 'Kurale': [400], 'Laila': [400,700], 'Martel': [400,700], 'Martel Sans': [400,700], 'Matangi': [400,700], 'Modak': [400], 'Mukta': [400,700], 'Noto Sans Devanagari': [400,700], 'Noto Serif Devanagari': [400,700], 'Palanquin': [400,700], 'Palanquin Dark': [400,700], 'Playpen Sans Deva': [400,700], 'Poppins': [400,700], 'Pragati Narrow': [400,700], 'Rajdhani': [400,700], 'Ranga': [400,700], 'Rhodium Libre': [400], 'Rozha One': [400], 'Sahitya': [400,700], 'Sarala': [400,700], 'Sarpanch': [400,700], 'Sumana': [400,700], 'Sura': [400,700], 'Teko': [400,700], 'Tillana': [400,700], 'Tiro Devanagari Hindi': [400], 'Tiro Devanagari Marathi': [400], 'Tiro Devanagari Sanskrit': [400], 'Vesper Libre': [400,700], 'Yantramanav': [400,700], 'Yatra One': [400]};
     var loaded = {};
     function loadGFont(fam) {
       if (loaded[fam]) return Promise.resolve();
       return new Promise(function (res) {
         var l = document.createElement('link'); l.rel = 'stylesheet';
-        l.href = 'https://fonts.googleapis.com/css2?family=' + GFONTS[fam] + '&display=swap';
+        l.href = 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(fam).replace(/%20/g, '+') + ':wght@' + (GFONTS[fam] || [400]).join(';') + '&display=swap';
         l.onload = function () { loaded[fam] = true; setTimeout(res, 200); };
         document.head.appendChild(l);
       });
@@ -506,17 +570,18 @@
       var tc = document.getElementById('imgTextColor').value;
       var bg = window._transparent ? null : document.getElementById('imgBgColor').value;
       await loadGFont(fam);
+      try { await document.fonts.load((document.getElementById('imgWeight') || {value:400}).value + ' 40px "' + fam + '"', 'नमस्ते'); } catch (e) {}
       var lines = txt.split('\n');
       var cv = document.getElementById('imgCanvas');
       var ctx = cv.getContext('2d');
-      ctx.font = size + 'px "' + fam + '", "Noto Sans Devanagari", sans-serif';
+      ctx.font = (document.getElementById('imgWeight') ? document.getElementById('imgWeight').value : 400) + ' ' + size + 'px "' + fam + '", "Noto Sans Devanagari", sans-serif';
       var maxW = lines.reduce(function (m, l) { return Math.max(m, ctx.measureText(l).width); }, 0);
       var pad = Math.round(size * 0.6);
       cv.width = maxW + pad * 2;
       cv.height = size * lines.length + pad * 2;
       if (bg) { ctx.fillStyle = bg; ctx.fillRect(0, 0, cv.width, cv.height); }
       ctx.clearRect && !bg && ctx.clearRect(0, 0, cv.width, cv.height);
-      ctx.font = size + 'px "' + fam + '", "Noto Sans Devanagari", sans-serif';
+      ctx.font = (document.getElementById('imgWeight') ? document.getElementById('imgWeight').value : 400) + ' ' + size + 'px "' + fam + '", "Noto Sans Devanagari", sans-serif';
       ctx.fillStyle = tc;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';

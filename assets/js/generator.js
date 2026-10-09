@@ -10,71 +10,76 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!inp || !grid) return;
 
   /* ── BASE FONTS ── */
+  /* Every Google Fonts family with Devanagari support (61; Noto Sans skipped as it
+     duplicates Noto Sans Devanagari). w = weights shown as separate fonts. */
   const BASE = [
-    {n:'गोटू',       f:'Gotu',                    t:'sans'},
-    {n:'मोदक',       f:'Modak',                   t:'display'},
-    {n:'श्रीखंड',    f:'Srikhand',                t:'display'},
-    {n:'टेको',       f:'Teko',                    t:'display'},
-    {n:'कलम',        f:'Kalam',                   t:'calli'},
-    {n:'नोटो सैन्स', f:'Noto Sans Devanagari',    t:'sans'},
-    {n:'तिल्लाना',   f:'Tillana',                 t:'calli'},
-    {n:'ग्लेगू',     f:'Glegoo',                  t:'serif'},
-    {n:'बालू 2',     f:'Baloo 2',                 t:'display'},
-    {n:'इंक नट',     f:'Inknut Antiqua',          t:'serif'},
-    {n:'पॉपिन्स',    f:'Poppins',                 t:'sans'},
-    {n:'आर्य',       f:'Arya',                    t:'sans'},
-    {n:'हिन्द',      f:'Hind',                    t:'sans'},
-    {n:'जैनी पूर्वा',f:'Jaini Purva',             t:'display'},
-    {n:'पालकी डार्क',f:'Palanquin Dark',          t:'sans'},
-    {n:'मुक्ता',     f:'Mukta',                   t:'sans'},
-    {n:'तिरो',       f:'Tiro Devanagari Hindi',   t:'serif'},
-    {n:'बालू भाई',   f:'Baloo Bhai 2',            t:'display'},
-    {n:'कर्मा',      f:'Karma',                   t:'serif'},
-    {n:'बालू तम्बी', f:'Baloo Thambi 2',          t:'display'},
-    {n:'रोझा वन',    f:'Rozha One',               t:'display'},
-    {n:'बालू पाजी',  f:'Baloo Paaji 2',           t:'display'},
-    {n:'बालू चेट्टन',f:'Baloo Chettan 2',         t:'display'},
-    {n:'अनेक',       f:'Anek Devanagari',          t:'sans'},
-    {n:'बालू भैना',  f:'Baloo Bhaina 2',          t:'display'},
-    {n:'यंत्रमानव',  f:'Yantramanav',             t:'sans'},
-    {n:'कम्बे',      f:'Cambay',                  t:'sans'},
-    {n:'खुला',       f:'Khula',                   t:'sans'},
-    {n:'मार्टेल',    f:'Martel',                  t:'serif'},
-    {n:'सरला',       f:'Sarala',                  t:'sans'},
-    {n:'यात्रा वन',  f:'Yatra One',               t:'display'},
-    {n:'बिरयानी',    f:'Biryani',                 t:'display'},
-    {n:'साहित्य',    f:'Sahitya',                 t:'serif'},
-    {n:'अमिता',      f:'Amita',                   t:'calli'},
-    {n:'एक्ज़ार',    f:'Eczar',                   t:'serif'},
-    {n:'हलन्त',      f:'Halant',                  t:'sans'},
-    {n:'लैला',       f:'Laila',                   t:'calli'},
-    {n:'राजधानी',    f:'Rajdhani',                t:'sans'},
-    {n:'रंगा',       f:'Ranga',                   t:'calli'},
-    {n:'डेको',       f:'Dekko',                   t:'calli'},
-    {n:'सूर्य',      f:'Sura',                    t:'serif'},
-    {n:'असर',        f:'Asar',                    t:'serif'},
-    {n:'खंड',        f:'Khand',                   t:'sans'},
-    {n:'पटुआ',       f:'Patua One',               t:'display'},
-    {n:'प्रगति',     f:'Pragati Narrow',          t:'sans'},
-    {n:'जल्दी',      f:'Jaldi',                   t:'sans'},
-    {n:'कुराले',     f:'Kurale',                  t:'serif'},
-    {n:'सुमन',       f:'Sumana',                  t:'serif'},
-    {n:'वेस्पर',     f:'Vesper Libre',            t:'serif'},
-    {n:'कड़वा',      f:'Kadwa',                   t:'serif'},
-    {n:'रोडियम',     f:'Rhodium Libre',           t:'serif'},
-    {n:'जैनी',       f:'Jaini',                   t:'display'},
-    {n:'पालकी',      f:'Palanquin',               t:'sans'},
-    {n:'नोटो सेरिफ', f:'Noto Serif Devanagari',   t:'serif'},
-    {n:'तिरो संस्कृत',f:'Tiro Devanagari Sanskrit',t:'serif'},
-    {n:'तिरो मराठी', f:'Tiro Devanagari Marathi', t:'serif'},
-    {n:'अक्षर',      f:'Akshar',                  t:'sans'},
-    {n:'अमीको',      f:'Amiko',                   t:'sans'},
+    {n:'गोटू', f:'Gotu', t:'sans', w:[400]},
+    {n:'मोदक', f:'Modak', t:'display', w:[400]},
+    {n:'टेको', f:'Teko', t:'display', w:[300,400,700]},
+    {n:'कलम', f:'Kalam', t:'calli', w:[300,400,700]},
+    {n:'नोटो सैन्स', f:'Noto Sans Devanagari', t:'sans', w:[100,400,700,900]},
+    {n:'तिल्लाना', f:'Tillana', t:'calli', w:[400,700,800]},
+    {n:'ग्लेगू', f:'Glegoo', t:'serif', w:[400,700]},
+    {n:'बालू 2', f:'Baloo 2', t:'display', w:[400,700,800]},
+    {n:'इंक नट', f:'Inknut Antiqua', t:'serif', w:[300,400,700,900]},
+    {n:'पॉपिन्स', f:'Poppins', t:'sans', w:[100,400,700,900]},
+    {n:'आर्य', f:'Arya', t:'sans', w:[400,700]},
+    {n:'हिन्द', f:'Hind', t:'sans', w:[300,400,700]},
+    {n:'जैनी पूर्वा', f:'Jaini Purva', t:'display', w:[400]},
+    {n:'पालकी डार्क', f:'Palanquin Dark', t:'sans', w:[400,700]},
+    {n:'मुक्ता', f:'Mukta', t:'sans', w:[200,400,700,800]},
+    {n:'तिरो', f:'Tiro Devanagari Hindi', t:'serif', w:[400]},
+    {n:'कर्मा', f:'Karma', t:'serif', w:[300,400,700]},
+    {n:'रोझा वन', f:'Rozha One', t:'display', w:[400]},
+    {n:'अनेक', f:'Anek Devanagari', t:'sans', w:[100,400,700,800]},
+    {n:'यंत्रमानव', f:'Yantramanav', t:'sans', w:[100,400,700,900]},
+    {n:'कम्बे', f:'Cambay', t:'sans', w:[400,700]},
+    {n:'खुला', f:'Khula', t:'sans', w:[300,400,700,800]},
+    {n:'मार्टेल', f:'Martel', t:'serif', w:[200,400,700,900]},
+    {n:'सरला', f:'Sarala', t:'sans', w:[400,700]},
+    {n:'यात्रा वन', f:'Yatra One', t:'display', w:[400]},
+    {n:'बिरयानी', f:'Biryani', t:'display', w:[200,400,700,900]},
+    {n:'साहित्य', f:'Sahitya', t:'serif', w:[400,700]},
+    {n:'अमिता', f:'Amita', t:'calli', w:[400,700]},
+    {n:'एक्ज़ार', f:'Eczar', t:'serif', w:[400,700,800]},
+    {n:'हलन्त', f:'Halant', t:'sans', w:[300,400,700]},
+    {n:'लैला', f:'Laila', t:'calli', w:[300,400,700]},
+    {n:'राजधानी', f:'Rajdhani', t:'sans', w:[300,400,700]},
+    {n:'रंगा', f:'Ranga', t:'calli', w:[400,700]},
+    {n:'डेको', f:'Dekko', t:'calli', w:[400]},
+    {n:'सूर्य', f:'Sura', t:'serif', w:[400,700]},
+    {n:'असर', f:'Asar', t:'serif', w:[400]},
+    {n:'खंड', f:'Khand', t:'sans', w:[300,400,700]},
+    {n:'प्रगति', f:'Pragati Narrow', t:'sans', w:[400,700]},
+    {n:'जल्दी', f:'Jaldi', t:'sans', w:[400,700]},
+    {n:'कुराले', f:'Kurale', t:'serif', w:[400]},
+    {n:'सुमन', f:'Sumana', t:'serif', w:[400,700]},
+    {n:'वेस्पर', f:'Vesper Libre', t:'serif', w:[400,700,900]},
+    {n:'कड़वा', f:'Kadwa', t:'serif', w:[400,700]},
+    {n:'रोडियम', f:'Rhodium Libre', t:'serif', w:[400]},
+    {n:'जैनी', f:'Jaini', t:'display', w:[400]},
+    {n:'पालकी', f:'Palanquin', t:'sans', w:[100,400,700]},
+    {n:'नोटो सेरिफ', f:'Noto Serif Devanagari', t:'serif', w:[100,400,700,900]},
+    {n:'तिरो संस्कृत', f:'Tiro Devanagari Sanskrit', t:'serif', w:[400]},
+    {n:'तिरो मराठी', f:'Tiro Devanagari Marathi', t:'serif', w:[400]},
+    {n:'अक्षर', f:'Akshar', t:'sans', w:[300,400,700]},
+    {n:'अमीको', f:'Amiko', t:'sans', w:[400,700]},
+    {n:'अलकत्रा', f:'Alkatra', t:'display', w:[400,700]},
+    {n:'अन्नपूर्णा', f:'Annapurna SIL', t:'serif', w:[400,700]},
+    {n:'बकबक', f:'Bakbak One', t:'display', w:[400]},
+    {n:'गजराज', f:'Gajraj One', t:'display', w:[400]},
+    {n:'गूगल सैन्स', f:'Google Sans', t:'sans', w:[400,700]},
+    {n:'आईबीएम प्लेक्स', f:'IBM Plex Sans Devanagari', t:'sans', w:[100,400,700]},
+    {n:'मार्टेल सैन्स', f:'Martel Sans', t:'sans', w:[200,400,700,900]},
+    {n:'मातंगी', f:'Matangi', t:'sans', w:[300,400,700,900]},
+    {n:'प्लेपेन', f:'Playpen Sans Deva', t:'calli', w:[100,400,700,800]},
+    {n:'सरपंच', f:'Sarpanch', t:'sans', w:[400,700,900]},
   ];
 
   const EFFECTS = [
-    {k:'3d',      cls:'style-3d',        suffix:' 3D',      on:['Modak','Baloo 2','Teko','Rozha One','Srikhand']},
+    {k:'3d',      cls:'style-3d',        suffix:' 3D',      on:['Modak','Baloo 2','Teko','Rozha One','Gajraj One']},
     {k:'shadow',  cls:'style-shadow',    suffix:' Shadow',  on:['Poppins','Kalam','Ranga','Gotu']},
-    {k:'outline', cls:'style-outline',   suffix:' Outline', on:['Baloo 2','Teko','Modak','Srikhand']},
+    {k:'outline', cls:'style-outline',   suffix:' Outline', on:['Baloo 2','Teko','Modak','Gajraj One']},
     {k:'hearts',  cls:'', pre:'♥ ', post:' ♥',  suffix:' ♥',     on:['Kalam','Amita','Laila','Tillana','Dekko']},
     {k:'stars',   cls:'', pre:'★ ', post:' ★',  suffix:' ★',     on:['Kalam','Amita','Laila','Tillana','Dekko']},
     {k:'brackets',cls:'', pre:'【', post:'】',  suffix:' 【】',   on:['Noto Sans Devanagari','Hind','Rajdhani']},
@@ -86,46 +91,63 @@ document.addEventListener('DOMContentLoaded', () => {
     {k:'sparkle', cls:'', pre:'✨ ', post:' ✨', suffix:' ✨',     on:['Noto Sans Devanagari','Kalam']},
     {k:'frame',   cls:'', pre:'『', post:'』',  suffix:' 『』',   on:['Noto Sans Devanagari','Kalam']},
     {k:'under',   cls:'style-underline', suffix:' Line',    on:['Poppins','Hind','Mukta','Tiro Devanagari Hindi']},
-    {k:'bold',    cls:'style-bold',      suffix:' Bold',    on:['Noto Sans Devanagari','Hind','Mukta','Poppins']},
     {k:'italic',  cls:'style-italic',    suffix:' Italic',  on:['Tiro Devanagari Hindi','Karma','Martel','Sahitya']},
   ];
 
   /* Build full styles list */
   const STYLES = [];
-  BASE.forEach(b => STYLES.push({lbl:b.n, fam:b.f, cls:'', tag:b.t}));
+  const WNAME = {100:'Thin',200:'ExtraLight',300:'Light',400:'',500:'Medium',600:'SemiBold',700:'Bold',800:'ExtraBold',900:'Black'};
+  const REG = b => b.w.includes(400) ? 400 : b.w[0];
+  BASE.forEach(b => b.w.forEach(w => STYLES.push({
+    lbl: b.n + (w === REG(b) ? '' : ' ' + WNAME[w]), fam: b.f, w: w, cls: '', tag: b.t })));
   EFFECTS.forEach(e => {
     BASE.filter(b => e.on.includes(b.f)).forEach(b => {
-      STYLES.push({lbl:b.n+e.suffix, fam:b.f, cls:e.cls, tag:'effect', pre:e.pre||'', post:e.post||''});
+      STYLES.push({lbl:b.n+e.suffix, fam:b.f, w:REG(b), cls:e.cls, tag:'effect', pre:e.pre||'', post:e.post||''});
     });
   });
 
   const deco = (s, t) => (s.pre || '') + t + (s.post || '');
   const PER = 12;
   let page = 1;
-  const tot = () => Math.ceil(STYLES.length / PER);
+  let filter = 'all';
+  const view = () => filter === 'all' ? STYLES : STYLES.filter(s => s.tag === filter);
+  const tot = () => Math.max(1, Math.ceil(view().length / PER));
   const loaded = new Set();
 
   if (cntEl) cntEl.textContent = STYLES.length;
+  const famCount = document.getElementById('fontFamCount');
+  if (famCount) famCount.textContent = BASE.length;
+  const fontCount = document.getElementById('fontFileCount');
+  if (fontCount) fontCount.textContent = BASE.reduce((n, b) => n + b.w.length, 0);
+  document.querySelectorAll('[data-filter]').forEach(btn => btn.addEventListener('click', () => {
+    filter = btn.getAttribute('data-filter'); page = 1;
+    document.querySelectorAll('[data-filter]').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+    render();
+  }));
 
-  var _pendingFonts = [];
+  var _pending = {};      // family -> Set of weights waiting to load
   var _fontTimer = null;
-  function loadFont(fam) {
-    if (loaded.has(fam)) return;
-    loaded.add(fam);
-    _pendingFonts.push(fam);
+  function loadFont(fam, w) {
+    var key = fam + ':' + w;
+    if (loaded.has(key)) return;
+    loaded.add(key);
+    (_pending[fam] = _pending[fam] || new Set()).add(w);
     clearTimeout(_fontTimer);
     _fontTimer = setTimeout(_flushFonts, 50);
   }
   function _flushFonts() {
-    if (!_pendingFonts.length) return;
-    var batch = _pendingFonts.splice(0, 8);
-    var url = 'https://fonts.googleapis.com/css2?' +
-      batch.map(function(f) { return 'family=' + encodeURIComponent(f); }).join('&') +
-      '&display=swap';
-    var l = document.createElement('link');
-    l.rel = 'stylesheet'; l.href = url;
-    document.head.appendChild(l);
-    if (_pendingFonts.length) setTimeout(_flushFonts, 80);
+    var fams = Object.keys(_pending);
+    while (fams.length) {
+      var batch = fams.splice(0, 8);
+      var url = 'https://fonts.googleapis.com/css2?' + batch.map(function (f) {
+        var ws = Array.from(_pending[f]).sort(function (a, b) { return a - b; });
+        return 'family=' + encodeURIComponent(f).replace(/%20/g, '+') + ':wght@' + ws.join(';');
+      }).join('&') + '&display=swap';
+      var l = document.createElement('link');
+      l.rel = 'stylesheet'; l.href = url;
+      document.head.appendChild(l);
+    }
+    _pending = {};
   }
 
   // Simple English-to-Hindi transliteration map
@@ -191,10 +213,10 @@ function getText() {
     grid.classList.remove('loading');
     grid.innerHTML = '';
     const t = getText();
-    const slice = STYLES.slice((page-1)*PER, page*PER);
+    const slice = view().slice((page-1)*PER, page*PER);
 
     slice.forEach(s => {
-      loadFont(s.fam);
+      loadFont(s.fam, s.w);
       const card = document.createElement('div');
       card.className = 'font-card';
 
@@ -206,6 +228,7 @@ function getText() {
       const prev = document.createElement('div');
       prev.className = 'fc-preview' + (s.cls ? ' '+s.cls : '');
       prev.style.fontFamily = `'${s.fam}', sans-serif`;
+      prev.style.fontWeight = s.w;
       prev.textContent = deco(s, t);
       prev.dataset.pre = s.pre || ''; prev.dataset.post = s.post || '';
 
@@ -239,15 +262,15 @@ function getText() {
         const wrap = document.createElement('div');
         wrap.style.cssText = 'position:fixed;left:-9999px;top:0;padding:28px 36px;background:#FDFCFA';
         const p = document.createElement('p');
-        p.style.cssText = `font-family:'${s.fam}',sans-serif;font-size:2.5rem;color:#1C1917;margin:0;line-height:1.3`;
+        p.style.cssText = `font-family:'${s.fam}',sans-serif;font-weight:${s.w};font-size:2.5rem;color:#1C1917;margin:0;line-height:1.3`;
         if (s.cls) p.classList.add(s.cls);
         p.textContent = deco(s, getText()); wrap.appendChild(p); document.body.appendChild(wrap);
-        await document.fonts.load(`1rem "${s.fam}"`);
+        await document.fonts.load(`${s.w} 1rem "${s.fam}"`);
         const cv = await html2canvas(wrap, {backgroundColor:'#FDFCFA',scale:3,logging:false});
         document.body.removeChild(wrap);
         const a = document.createElement('a');
         a.href = cv.toDataURL('image/png');
-        a.download = 'hindi-font-'+(s.fam+' '+(s.cls||'')).trim().toLowerCase().replace(/[^a-z0-9]+/g,'-')+'.png';
+        a.download = 'hindi-font-'+(s.fam+' '+(s.w===400?'':s.w)+' '+(s.cls||'')).trim().toLowerCase().replace(/[^a-z0-9]+/g,'-')+'.png';
         a.click();
       };
 
@@ -260,15 +283,15 @@ function getText() {
         wrap.style.cssText = 'position:fixed;left:-9999px;top:0;padding:28px 36px;background:transparent';
         const p2 = document.createElement('p');
         const tc = document.getElementById('textColorPicker');
-        p2.style.cssText = `font-family:'${s.fam}',sans-serif;font-size:2.5rem;color:${tc?tc.value:'#1C1917'};margin:0;line-height:1.3`;
+        p2.style.cssText = `font-family:'${s.fam}',sans-serif;font-weight:${s.w};font-size:2.5rem;color:${tc?tc.value:'#1C1917'};margin:0;line-height:1.3`;
         if (s.cls) p2.classList.add(s.cls);
         p2.textContent = deco(s, getText()); wrap.appendChild(p2); document.body.appendChild(wrap);
-        await document.fonts.load(`1rem "${s.fam}"`);
+        await document.fonts.load(`${s.w} 1rem "${s.fam}"`);
         const cv = await html2canvas(wrap, {backgroundColor:null, scale:3, logging:false});
         document.body.removeChild(wrap);
         const a = document.createElement('a');
         a.href = cv.toDataURL('image/png');
-        a.download = 'hindi-font-transparent-'+(s.fam+' '+(s.cls||'')).trim().toLowerCase().replace(/[^a-z0-9]+/g,'-')+'.png';
+        a.download = 'hindi-font-transparent-'+(s.fam+' '+(s.w===400?'':s.w)+' '+(s.cls||'')).trim().toLowerCase().replace(/[^a-z0-9]+/g,'-')+'.png';
         a.click();
         tpngBtn.textContent = '✓ Done';
         setTimeout(() => { tpngBtn.textContent = '⬡ Transparent'; }, 2000);
@@ -280,6 +303,9 @@ function getText() {
     });
 
     if (curEl) curEl.textContent = page;
+    var rs = document.getElementById('rangeStart'), re_ = document.getElementById('rangeEnd');
+    if (rs) rs.textContent = view().length ? (page - 1) * PER + 1 : 0;
+    if (re_) re_.textContent = Math.min(page * PER, view().length);
     if (totEl) totEl.textContent = tot();
     if (prevBtn) prevBtn.disabled = page === 1;
     if (nextBtn) nextBtn.disabled = page === tot();
