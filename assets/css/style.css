@@ -779,9 +779,10 @@ footer {
 .hub-guide-inner { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem 3rem; border-top: none; }
 
 /* ── Generator category filters ── */
-.gen-filters { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; margin: 1rem 0 .25rem; }
+.gen-filters { max-width: var(--max); margin: 1rem auto .25rem; padding: 0 2rem; display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
 .gen-filters button { font: inherit; font-size: .8rem; padding: .35rem .8rem; border: 1px solid var(--border-strong); border-radius: 999px; background: var(--white); color: var(--ink-3); cursor: pointer; }
 .gen-filters button:hover { border-color: var(--red); color: var(--red); }
 .gen-filters button[aria-pressed="true"] { background: var(--red); border-color: var(--red); color: #fff; }
 .gen-filters-note { font-size: .75rem; color: var(--ink-4); margin-left: auto; }
 @media (max-width: 600px) { .gen-filters-note { margin-left: 0; width: 100%; } }
+@media (max-width: 768px) { .gen-filters { padding-left: 1.25rem; padding-right: 1.25rem; } }
