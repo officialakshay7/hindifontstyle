@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!inp || !grid) return;
 
   /* ── BASE FONTS ── */
-  /* Every Google Fonts family with Devanagari support (61; Noto Sans skipped as it
-     duplicates Noto Sans Devanagari). w = weights shown as separate fonts. */
   const BASE = [
     {n:'गोटू', f:'Gotu', t:'sans', w:[400]},
     {n:'मोदक', f:'Modak', t:'display', w:[400]},
@@ -83,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     {k:'hearts',  cls:'', pre:'♥ ', post:' ♥',  suffix:' ♥',     on:['Kalam','Amita','Laila','Tillana','Dekko']},
     {k:'stars',   cls:'', pre:'★ ', post:' ★',  suffix:' ★',     on:['Kalam','Amita','Laila','Tillana','Dekko']},
     {k:'brackets',cls:'', pre:'【', post:'】',  suffix:' 【】',   on:['Noto Sans Devanagari','Hind','Rajdhani']},
-    /* Unicode decorations: real characters, so they survive copy-paste */
     {k:'royal',   cls:'', pre:'꧁ ', post:' ꧂', suffix:' ꧁꧂',   on:['Noto Sans Devanagari','Kalam']},
     {k:'wave',    cls:'', pre:'★彡 ', post:' 彡★', suffix:' 彡',  on:['Noto Sans Devanagari','Kalam']},
     {k:'ribbon',  cls:'', pre:'•°¯`•• ', post:' ••´¯°•', suffix:' •°•', on:['Noto Sans Devanagari','Kalam']},
@@ -94,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
     {k:'italic',  cls:'style-italic',    suffix:' Italic',  on:['Tiro Devanagari Hindi','Karma','Martel','Sahitya']},
   ];
 
-  /* Build full styles list */
   const STYLES = [];
   const WNAME = {100:'Thin',200:'ExtraLight',300:'Light',400:'',500:'Medium',600:'SemiBold',700:'Bold',800:'ExtraBold',900:'Black'};
   const REG = b => b.w.includes(400) ? 400 : b.w[0];
@@ -125,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     render();
   }));
 
-  var _pending = {};      // family -> Set of weights waiting to load
+  var _pending = {};
   var _fontTimer = null;
   function loadFont(fam, w) {
     var key = fam + ':' + w;
@@ -150,48 +146,12 @@ document.addEventListener('DOMContentLoaded', () => {
     _pending = {};
   }
 
-  // Simple English-to-Hindi transliteration map
-const TRANSLIT = {
-  'a':'अ','aa':'आ','i':'इ','ii':'ई','u':'उ','uu':'ऊ',
-  'e':'ए','ai':'ऐ','o':'ओ','au':'औ','ka':'क','kha':'ख',
-  'ga':'ग','gha':'घ','cha':'च','chha':'छ','ja':'ज','jha':'झ',
-  'ta':'त','tha':'थ','da':'द','dha':'ध','na':'न','pa':'प',
-  'pha':'फ','ba':'ब','bha':'भ','ma':'म','ya':'य','ra':'र',
-  'la':'ल','va':'व','sha':'श','sa':'स','ha':'ह','kka':'क्क',
-  'namaste':'नमस्ते','bharat':'भारत','hindi':'हिंदी',
-  'diwali':'दीपावली','shubh':'शुभ','jai':'जय',
-  'radhe':'राधे','krishna':'कृष्ण','ram':'राम','sita':'सीता',
-  'love':'प्यार','india':'भारत','mera':'मेरा','naam':'नाम',
-  'pyar':'प्यार','dil':'दिल','zindagi':'ज़िंदगी','yaar':'यार',
-  'bhai':'भाई','dost':'दोस्त','ghar':'घर','khana':'खाना'
-};
-
-function isHindi(text) {
-  return /[\u0900-\u097F]/.test(text);
-}
-
-function transliterate(text) {
-  if (window.HFSTranslit) return window.HFSTranslit.text(text);
-  if (!text || isHindi(text)) return text;
-  var lower = text.toLowerCase().trim();
-  // 1. Check full phrase match first
-  if (TRANSLIT[lower]) return TRANSLIT[lower];
-  // 2. Try word-by-word
-  var words = lower.split(/\s+/);
-  var out = words.map(function(w) { return TRANSLIT[w] || w; });
-  if (out.some(function(w, i) { return w !== words[i]; })) {
-    return out.join(' ');
+  function getText() {
+    var raw = inp.value.trim();
+    if (!raw) return 'नमस्ते भारत';
+    return window.HFSTranslit ? window.HFSTranslit.text(raw) : raw;
   }
-  return text; // No match — return as typed
-}
 
-function getText() {
-  var raw = inp.value.trim();
-  if (!raw) return 'नमस्ते भारत';
-  return transliterate(raw) || raw;
-}
-
-  /* html2canvas is loaded on demand the first time an image is exported */
   function ensureH2C() {
     return new Promise(function (resolve, reject) {
       if (window.html2canvas) return resolve();
@@ -234,17 +194,15 @@ function getText() {
 
       const btns = document.createElement('div'); btns.className = 'fc-btns';
 
-      /* Copy */
-      const cpBtn = mkBtn('<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy');
+      const cpBtn = mkBtn('<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy');
       cpBtn.onclick = async () => {
         const out = deco(s, getText());
         try { await navigator.clipboard.writeText(out); }
         catch { const ta=document.createElement('textarea');ta.value=out;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta); }
         cpBtn.classList.add('copied'); cpBtn.textContent = '✓ Copied';
-        setTimeout(() => { cpBtn.classList.remove('copied'); cpBtn.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy'; }, 2000);
+        setTimeout(() => { cpBtn.classList.remove('copied'); cpBtn.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy'; }, 2000);
       };
 
-      /* Font DL */
       const ftBtn = mkBtn('↗ Get font');
       ftBtn.title = 'Open this font on Google Fonts to download it free';
       ftBtn.onclick = () => {
@@ -255,7 +213,6 @@ function getText() {
         setTimeout(() => { ftBtn.textContent = orig; }, 2000);
       };
 
-      /* Image DL */
       const imgBtn = mkBtn('⬡ Image');
       imgBtn.onclick = async () => {
         try { await ensureH2C(); } catch (e) { alert('Image export could not load. Please check your connection and try again.'); return; }
@@ -274,7 +231,6 @@ function getText() {
         a.click();
       };
 
-      /* Transparent PNG */
       const tpngBtn = mkBtn('⬡ Transparent');
       tpngBtn.title = 'Download with transparent background';
       tpngBtn.onclick = async () => {
@@ -310,22 +266,20 @@ function getText() {
     if (prevBtn) prevBtn.disabled = page === 1;
     if (nextBtn) nextBtn.disabled = page === tot();
 
-    // Re-apply size and colour after render
     _reapplyControls();
   }
 
   function mkBtn(html) {
     const b = document.createElement('button');
+    b.type = 'button';
     b.className = 'fc-btn'; b.innerHTML = html; return b;
   }
 
-  /* Live text update */
   inp.addEventListener('input', () => {
     const t = getText();
     document.querySelectorAll('.fc-preview').forEach(el => { el.textContent = (el.dataset.pre || '') + t + (el.dataset.post || ''); });
   });
 
-  /* Pagination */
   if (prevBtn) prevBtn.onclick = () => {
     if (page > 1) { page--; render(); document.getElementById('generator')?.scrollIntoView({behavior:'smooth', block:'start'}); }
   };
@@ -333,7 +287,6 @@ function getText() {
     if (page < tot()) { page++; render(); document.getElementById('generator')?.scrollIntoView({behavior:'smooth', block:'start'}); }
   };
 
-  /* Input helpers */
   document.getElementById('pasteBtn')?.addEventListener('click', async () => {
     try { inp.value = await navigator.clipboard.readText(); inp.dispatchEvent(new Event('input')); } catch {}
   });
@@ -341,7 +294,6 @@ function getText() {
     inp.value = ''; inp.dispatchEvent(new Event('input'));
   });
 
-  /* ── SIZE + COLOUR CONTROLS ─────────────────────────────── */
   function _reapplyControls() {
     var slider   = document.getElementById('fontSizeSlider');
     var textPick = document.getElementById('textColorPicker');
@@ -351,12 +303,12 @@ function getText() {
         el.style.fontSize = slider.value + 'px';
       });
     }
-    if (textPick && textPick.value !== '#1c1917' && textPick.value !== '#1C1917') {
+    if (textPick && textPick.value.toLowerCase() !== '#1c1917') {
       document.querySelectorAll('.fc-preview').forEach(function(el) {
         el.style.color = textPick.value;
       });
     }
-    if (bgPick && bgPick.value !== '#fdfcfa' && bgPick.value !== '#FDFCFA') {
+    if (bgPick && bgPick.value.toLowerCase() !== '#fdfcfa') {
       document.querySelectorAll('.font-card').forEach(function(el) {
         el.style.background = bgPick.value;
       });
@@ -393,6 +345,5 @@ function getText() {
     }
   })();
 
-  /* Init */
   render();
 });
