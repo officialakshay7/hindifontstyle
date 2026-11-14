@@ -468,6 +468,215 @@ textarea:focus-visible {
   letter-spacing: .5px;
 }
 
+/* ── ANDROID APP PROMO ── */
+.btn-play-store {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: #fff;
+  color: var(--ink);
+  padding: 14px 22px;
+  border-radius: var(--r);
+  font-size: .9rem;
+  font-weight: 600;
+  transition: background .15s, transform .1s;
+}
+
+.btn-play-store:hover {
+  background: var(--cream);
+  transform: translateY(-1px);
+}
+
+.app-promo {
+  overflow: hidden;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  padding: 4.5rem 2rem;
+}
+
+.app-promo-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 4rem;
+}
+
+.app-promo-kicker {
+  color: var(--red);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  margin-bottom: .85rem;
+}
+
+.app-promo-kicker span {
+  margin-right: .35rem;
+}
+
+.app-promo-copy h2 {
+  max-width: 470px;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -1.2px;
+  margin-bottom: 1rem;
+}
+
+.app-promo-description {
+  max-width: 490px;
+  color: var(--ink-3);
+  font-size: .95rem;
+  line-height: 1.7;
+}
+
+.app-promo-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem 1rem;
+  list-style: none;
+  margin: 1.5rem 0 1.7rem;
+  font-size: .82rem;
+  color: var(--ink-2);
+}
+
+.app-promo-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: .45rem;
+}
+
+.app-promo-features li span {
+  color: var(--red);
+  font-weight: 700;
+}
+
+.app-promo-download {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  padding: .7rem 1.15rem;
+  border-radius: var(--r-lg);
+  background: var(--ink);
+  color: #fff;
+  transition: background .15s, transform .1s;
+}
+
+.app-promo-download:hover {
+  background: var(--ink-2);
+  transform: translateY(-1px);
+}
+
+.app-promo-download span {
+  display: grid;
+  line-height: 1.2;
+}
+
+.app-promo-download small {
+  font-size: .58rem;
+  letter-spacing: .8px;
+}
+
+.app-promo-download strong {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.app-promo-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 330px;
+  border-radius: 20px;
+  background: radial-gradient(ellipse at 50% 50%, #f5dbe2 0%, #f2e9dd 65%, transparent 66%);
+}
+
+.app-promo-card {
+  position: relative;
+  width: min(100%, 300px);
+  padding: 1.2rem;
+  border: 1px solid rgba(28, 25, 23, .08);
+  border-radius: 14px;
+  background: var(--white);
+  box-shadow: 0 18px 45px rgba(28, 25, 23, .13);
+  transform: rotate(2deg);
+}
+
+.app-promo-card-top,
+.app-promo-style-row,
+.app-promo-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-promo-card-top {
+  color: var(--ink-4);
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.app-promo-card-label {
+  margin-top: 1.8rem;
+  color: var(--red);
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.app-promo-hindi {
+  padding: .1rem 0 .8rem;
+  color: var(--ink);
+  font-family: var(--deva);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.app-promo-style-row {
+  padding: .65rem 0;
+  border-top: 1px solid var(--border);
+  color: var(--ink-2);
+  font-family: var(--deva);
+  font-size: .95rem;
+}
+
+.app-promo-style-tag {
+  color: var(--ink-4);
+  font-family: var(--sans);
+  font-size: .53rem;
+  letter-spacing: .7px;
+}
+
+.app-promo-card-actions {
+  margin-top: 1rem;
+  padding-top: .75rem;
+  border-top: 1px solid var(--border);
+  color: var(--red);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+.app-promo-spark {
+  position: absolute;
+  color: var(--red);
+}
+
+.app-promo-spark-one {
+  top: 28px;
+  right: 12%;
+  font-size: 2rem;
+}
+
+.app-promo-spark-two {
+  bottom: 32px;
+  left: 10%;
+  font-size: 1.5rem;
+}
+
 /* ── GENERATOR SECTION ── */
 .gen-section {
   background: var(--white);
@@ -1745,6 +1954,23 @@ footer {
     display: flex;
   }
 
+  .app-promo {
+    padding: 3rem 1.5rem;
+  }
+
+  .app-promo-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .app-promo-copy {
+    max-width: 580px;
+  }
+
+  .app-promo-art {
+    min-height: 290px;
+  }
+
   .hero {
     padding: 3rem 1.5rem 2.5rem;
   }
@@ -1783,6 +2009,18 @@ footer {
 @media (max-width: 480px) {
   :root {
     --nav-h: 56px;
+  }
+
+  .app-promo {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .app-promo-features {
+    grid-template-columns: 1fr;
+  }
+
+  .app-promo-art {
+    min-height: 270px;
   }
 
   .hero h1 {
